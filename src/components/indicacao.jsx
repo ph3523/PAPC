@@ -20,7 +20,7 @@ function Indicacao() {
             <Row>
               {group.map((grupo) => (
                 <Col md={4} key={grupo.id}>
-                  <Card className="m-2">
+                  <Card className="mx-4">
                     <Card.Img 
                       variant="top" 
                       src={grupo.imagem} 
