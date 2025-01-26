@@ -82,9 +82,9 @@ vite.config.js
   <tr>
     <td align="center"><a href="https://github.com/ph3523"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/80484091?v=4" width="100px;" alt=""/><br /><sub><b>Pedro Barroso</b></sub></a><br /><a href="mailto:ph.barroso3523@gmail.com" title="Email">✉️</a></td>
     <td align="center"><a href="https://github.com/EldFranklin"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/105466304?v=4" width="100px;" alt=""/><br /><sub><b>Wesley Franklin</b></sub></a><br /><a href="mailto:wesleyfranklin@alu.ufc.br" title="Email">✉️</a></td>
-    <td align="center"><a href="https://github.com/Eliasfr01"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/85709694?v=4" width="100px;" alt=""/><br /><sub><b>Elias</b></sub></a><br /><a href="mailto:" title="Email">✉️</a></td>
+    <td align="center"><a href="https://github.com/Eliasfr01"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/85709694?v=4" width="100px;" alt=""/><br /><sub><b>Jose Elias</b></sub></a><br /><a href="mailto:" title="Email">✉️</a></td>
     <td align="center"><a href="https://github.com/pedrohenriqux"><img style="border-radius: 50%;" src="https://lh3.googleusercontent.com/a/ACg8ocI7yXF4_DgMN5jqwYSPHUn6MiJYmPHqiCEPuQs7Ffx-puIsK33N=s192-c-mo" width="100px;" alt=""/><br /><sub><b>Kelwin Gabriel</b></sub></a><br /><a href="mailto:" title="Email">✉️</a></td>
-    <td align="center"><a href="https://github.com/Computerkeys"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/69978494?v=4" width="100px;" alt=""/><br /><sub><b>MArcelo Cardoso</b></sub></a><br /><a href="mailto:" title="Email">✉️</a></td>
+    <td align="center"><a href="https://github.com/Computerkeys"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/69978494?v=4" width="100px;" alt=""/><br /><sub><b>Marcelo Cardoso</b></sub></a><br /><a href="mailto:" title="Email">✉️</a></td>
     
   </tr>
  

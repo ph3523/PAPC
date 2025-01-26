@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "nome": "Grupo de Apoio à Ansiedade",
+    "descricao": "Grupo de apoio para pessoas que sofrem com ansiedade e seus familiares",
+    "endereco": "Rua Example, 123 - Centro",
+    "horarios": "Terças e Quintas, 19h-21h",
+    "publicoAlvo": "Adultos com ansiedade",
+    "contato": {
+      "telefone": "(11) 99999-9999",
+      "email": "contato@grupoapoio.com",
+      "whatsapp": "(11) 99999-9999"
+    },
+    "tipoAtendimento": "Presencial",
+    "gratuito": true,
+    "imagem": "../assets/img_gp1.jpg"
+  },
+  {
+    "id": 2,
+    "nome": "Roda de Conversa Online",
+    "descricao": "Encontros virtuais para compartilhar experiências e receber apoio emocional",
+    "endereco": "Plataforma Zoom",
+    "horarios": "Segundas, 20h-21h30",
+    "publicoAlvo": "Jovens entre 18-30 anos",
+    "contato": {
+      "telefone": "(11) 88888-8888",
+      "email": "rodadeconversa@email.com",
+      "whatsapp": "(11) 88888-8888"
+    },
+    "tipoAtendimento": "Online",
+    "gratuito": true,
+    "imagem": "../assets/img_gp2.jpg"
+  },
+  {
+    "id": 3,
+    "nome": "Grupo Terapêutico Depressão",
+    "descricao": "Grupo terapêutico focado no tratamento da depressão com psicólogos especializados",
+    "endereco": "Av. Principal, 456 - Jardim Europa",
+    "horarios": "Quartas, 18h-20h",
+    "publicoAlvo": "Adultos diagnosticados com depressão",
+    "contato": {
+      "telefone": "(11) 77777-7777",
+      "email": "grupoterapeutico@email.com",
+      "whatsapp": "(11) 77777-7777"
+    },
+    "tipoAtendimento": "Híbrido",
+    "gratuito": false,
+    "valorMensal": "R$ 200,00",
+    "imagem": "../assets/img_gp3.jpg"
+  },
+  {
+    "id": 4,
+    "nome": "Grupo de Apoio à Perda",
+    "descricao": "Grupo de apoio para pessoas que estão passando por um processo de luto",
+    "endereco": "Rua da Saudade, 789 - Vila Esperança",
+    "horarios": "Sábados, 10h-12h",
+    "publicoAlvo": "Adultos em processo de luto",
+    "contato": {
+      "telefone": "(11) 66666-6666",
+      "email": "grupodeaopioaperda@email.com",
+      "whatsapp": "(11) 66666-6666"
+    },
+    "tipoAtendimento": "Presencial",
+    "gratuito": false,
+    "valorMensal": "R$ 150,00",
+    "imagem": "../assets/img_gp4.jpg"
+  },
+  {
+    "id": 5,
+    "nome": "Grupo de Apoio à Dependência Química",
+    "descricao": "Grupo de apoio para dependentes químicos e familiares",
+    "endereco": "Rua da Recuperação, 321 - Vila Esperança",
+    "horarios": "Sextas, 19h-21h",
+    "publicoAlvo": "Adultos com dependência química",
+    "contato": {
+      "telefone": "(11) 55555-5555",
+      "email": "gpdependecia@email.com",
+      "whatsapp": "(11) 55555-5555"
+    },
+    "tipoAtendimento": "Presencial",
+    "gratuito": false,
+    "valorMensal": "R$ 450,00",
+    "imagem": "../assets/img_gp5.jpg"
+  },
+  {
+    "id": 6,
+    "nome": "Grupo de Apoio à Violência Doméstica",
+    "descricao": "Grupo de apoio para vítimas de violência doméstica",
+    "endereco": "Rua da Paz, 987 - Vila Esperança",
+    "horarios": "Quintas, 19h-21h",
+    "publicoAlvo": "Mulheres vítimas de violência doméstica",
+    "contato": {
+      "telefone": "(11) 44444-4444",
+      "email": "gpaviolencia@emial.com",
+      "whatsapp": "(11) 44444-4444"
+    },
+    "tipoAtendimento": "Presencial",
+    "gratuito": true,
+    "imagem": "../assets/img_gp6.jpg"
+  }
+]
