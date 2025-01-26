@@ -8,6 +8,12 @@
     flex-wrap: wrap;
   }
   
+  .footer-column li:first-child a {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #007bff; 
+    text-transform: uppercase;
+  }
   .footer-column {
     list-style-type: none;
     padding: 0;

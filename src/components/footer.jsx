@@ -5,18 +5,15 @@ const Footer = () => {
   return (
     <div className="footer">
       <ul className="footer-column">
-        <li><a href="#">PAPC</a></li>
+        <li ><a href="#">Populares no PAPC</a></li>
         <li><a href="#">Sobre nós</a></li>
         <li><a href="#">Consulta de vídeo - Teleconsulta</a></li>
         <li><a href="#">Carreiras</a></li>
         <li><a href="#">Imprensa</a></li>
-        <li><a href="#">Precisa de ajuda?</a></li>
-        <li><a href="#">Notificações fraudulentas (tentativas de phishing)</a></li>
         <li><a href="#">PAPC Japão</a></li>
         <li><a href="#">PAPC Itália</a></li>
         <li><a href="#">Saúde</a></li>
         <li><a href="#">Para os profissionais de saúde</a></li>
-        <li><a href="#">Software de gestão PAPC Pro</a></li>
         <li><a href="#">Comunidade PAPC</a></li>
       </ul>
       <ul className="footer-column">
@@ -30,7 +27,6 @@ const Footer = () => {
         <li><a href="#">Psicoterapeuta</a></li>
         <li><a href="#">Neuropsicólogo</a></li>
         <li><a href="#">Psicanalista</a></li>
-        <li><a href="#">Todas as especialidades</a></li>
       </ul>
       <ul className="footer-column">
         <li><a href="#">Pesquisas frequentes</a></li>
