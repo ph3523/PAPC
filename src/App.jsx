@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/indicacao" element={<Indicacao />} />
+        <Route path="/cadastro" element={<cadastro />} /> {/* Adicione a rota para Cadastro */}
       </Routes>
     </BrowserRouter>
   );
