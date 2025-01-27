@@ -66,12 +66,14 @@
   
     .footer-column {
       margin: 20px 0;
-      text-align: center; /* Centraliza o texto em telas menores */
+      text-align: center; 
     }
   
     .footer-column li {
-      margin-bottom: 8px; /* Reduz o espaçamento em dispositivos menores */
+      margin-bottom: 8px; 
     }
+
+    
   }
   
   
