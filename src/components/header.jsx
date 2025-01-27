@@ -2,18 +2,17 @@ import './header.css';
 import { Container } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return(
         <>
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand as={Link} to="/">
                     <img
                         src= '../assets/logo.svg'
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
+                        className="align-top"
                         alt="Logo"
                     />{' '}
                     PAPC
@@ -21,8 +20,8 @@ function Header() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Grupos de Apoio</Nav.Link>
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/indicacao">Grupos de Apoio</Nav.Link>
                         <Nav.Link href="#pricing">Contato</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
