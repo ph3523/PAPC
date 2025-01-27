@@ -6,10 +6,25 @@ import Header from './components/header';
 import Cadastro from './components/cadastro'; // Importando o Cadastro
 
 function App() {
-  const [showCadastro, setShowCadastro] = useState(false); // Estado para controlar a visibilidade do modal
+  const [showCadastro, setShowCadastro] = useState(false); // modal principal de cadastro
+  const [showPaciente, setShowPaciente] = useState(false); // Estado para 
+  // o modal de cadastro de paciente
+  const [showProfissional, setShowProfissional] = useState(false); // Estado para o modal de cadastro de profissional
 
-  const handleOpenCadastro = () => setShowCadastro(true); // Função para abrir o modal
-  const handleCloseCadastro = () => setShowCadastro(false); // Função para fechar o modal
+  const handleOpenCadastro = () => setShowCadastro(true); // abrir o modal principal
+  const handleCloseCadastro = () => setShowCadastro(false); // fechar o modal principal
+
+  const handleOpenPaciente = () => {
+    setShowPaciente(true);
+    setShowCadastro(false); // fecha o modal principal ao abrir o de paciente
+  };
+  const handleClosePaciente = () => setShowPaciente(false); // fechar o modal de paciente
+
+  const handleOpenProfissional = () => {
+    setShowProfissional(true);
+    setShowCadastro(false); // Fecha o modal principal ao abrir o de profissional
+  };
+  const handleCloseProfissional = () => setShowProfissional(false); // Função para fechar o modal de profissional
 
   return (
     <BrowserRouter>
@@ -18,9 +33,47 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/indicacao" element={<Indicacao />} />
       </Routes>
+
+
+
+      {showCadastro && <Cadastro onClose={handleCloseCadastro} onOpenPaciente={handleOpenPaciente} onOpenProfissional={handleOpenProfissional} />}
+
       
-      {/* Exibindo o modal Condicionalmente */}
-      {showCadastro && <Cadastro onClose={handleCloseCadastro} />}
+      {showPaciente && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Cadastro de Paciente</h2>
+            <form>
+              <input type="text" placeholder="Nome" />
+              <input type="email" placeholder="E-mail" />
+              <input type="password" placeholder="Senha" />
+              <button type="submit">Cadastrar</button>
+            </form>
+            <button className="close-button" onClick={handleClosePaciente}>Fechar</button>
+          </div>
+        </div>
+      )}
+
+      
+      {showProfissional && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Cadastro de Profissional</h2>
+            <form>
+              <input type="text" placeholder="Nome" />
+              <input type="email" placeholder="E-mail" />
+              <input type="password" placeholder="Senha" />
+              <input type="text" placeholder="Especialidade" />
+              <input type="text" placeholder="Localização" />
+              <input type="text" placeholder="Faixa Etária de Atendimento" />
+              <input type="number" placeholder="Quantidade de Atendimentos Gratuitos" />
+              <input type="file" />
+              <button type="submit">Cadastrar</button>
+            </form>
+            <button className="close-button" onClick={handleCloseProfissional}>Fechar</button>
+          </div>
+        </div>
+      )}
     </BrowserRouter>
   );
 }

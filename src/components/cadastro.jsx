@@ -1,22 +1,22 @@
 import React from "react";
 import "./cadastro.css";
 
-const Cadastro = ({ onClose }) => {
+const Cadastro = ({ onClose, onOpenPaciente, onOpenProfissional }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Escolha o tipo de cadastro</h2>
-        <div className="modal-buttons">
-          <button onClick={() => console.log("Cadastro de Paciente")}>
-            Paciente
+        <header>
+          <h2>Escolha o tipo de cadastro</h2>
+        </header>
+        <section className="modal-buttons">
+          <button onClick={onOpenPaciente} aria-label="Cadastrar como Paciente">Paciente</button>
+          <button onClick={onOpenProfissional} aria-label="Cadastrar como Profissional">Profissional</button>
+        </section>
+        <footer>
+          <button className="close-button" onClick={onClose} aria-label="Fechar modal">
+            Fechar
           </button>
-          <button onClick={() => console.log("Cadastro de Profissional")}>
-            Profissional
-          </button>
-        </div>
-        <button className="close-button" onClick={onClose}>
-          Fechar
-        </button>
+        </footer>
       </div>
     </div>
   );
