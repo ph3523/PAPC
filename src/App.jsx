@@ -3,12 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Indicacao from './components/indicacao';
 import Home from './pages/Home';
 import Header from './components/header';
-import Cadastro from './components/cadastro'; // Importando o Cadastro
+import Cadastro from './components/cadastro.jsx'; // Importando o Cadastro
 
 function App() {
   const [showCadastro, setShowCadastro] = useState(false); // modal principal de cadastro
-  const [showPaciente, setShowPaciente] = useState(false); // Estado para 
-  // o modal de cadastro de paciente
+  const [showPaciente, setShowPaciente] = useState(false); // Estado para o modal de cadastro de paciente
   const [showProfissional, setShowProfissional] = useState(false); // Estado para o modal de cadastro de profissional
 
   const handleOpenCadastro = () => setShowCadastro(true); // abrir o modal principal
@@ -34,31 +33,39 @@ function App() {
         <Route path="/indicacao" element={<Indicacao />} />
       </Routes>
 
+      {showCadastro && (
+        <Cadastro
+          onClose={handleCloseCadastro}
+          onOpenPaciente={handleOpenPaciente}
+          onOpenProfissional={handleOpenProfissional}
+        />
+      )}
 
-
-      {showCadastro && <Cadastro onClose={handleCloseCadastro} onOpenPaciente={handleOpenPaciente} onOpenProfissional={handleOpenProfissional} />}
-
-      
       {showPaciente && (
         <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>Cadastro de Paciente</h2>
+          <section className="modal-content">
+            <header>
+              <h2>Cadastro de Paciente</h2>
+            </header>
             <form>
               <input type="text" placeholder="Nome" />
               <input type="email" placeholder="E-mail" />
               <input type="password" placeholder="Senha" />
               <button type="submit">Cadastrar</button>
             </form>
-            <button className="close-button" onClick={handleClosePaciente}>Fechar</button>
-          </div>
+            <footer>
+              <button className="close-button" onClick={handleClosePaciente}>Fechar</button>
+            </footer>
+          </section>
         </div>
       )}
 
-      
       {showProfissional && (
         <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>Cadastro de Profissional</h2>
+          <section className="modal-content">
+            <header>
+              <h2>Cadastro de Profissional</h2>
+            </header>
             <form>
               <input type="text" placeholder="Nome" />
               <input type="email" placeholder="E-mail" />
@@ -70,8 +77,10 @@ function App() {
               <input type="file" />
               <button type="submit">Cadastrar</button>
             </form>
-            <button className="close-button" onClick={handleCloseProfissional}>Fechar</button>
-          </div>
+            <footer>
+              <button className="close-button" onClick={handleCloseProfissional}>Fechar</button>
+            </footer>
+          </section>
         </div>
       )}
     </BrowserRouter>
