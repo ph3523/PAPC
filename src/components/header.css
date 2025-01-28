@@ -1,17 +1,8 @@
-.navbar {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .navbar-nav {
-    display: flex;
-    justify-content: center;
-  }
-  .navbar-brand img{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+.navbar-brand img{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
 
 .container{
