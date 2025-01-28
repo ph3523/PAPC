@@ -1,4 +1,13 @@
-.navbar-brand img{
+.navbar {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+  }
+  .navbar-brand img{
     display: inline-block;
     width: 30px;
     height: 30px;
