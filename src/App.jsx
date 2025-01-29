@@ -1,10 +1,11 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Indicacao from './components/indicacao';
-import Home from './pages/Home';
-import Header from './components/header';
-import Login from './components/login';
-import Cadastro from './components/cadastro';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Indicacao from "./components/indicacao";
+import Home from "./pages/Home";
+import Header from "./components/header";
+import Login from "./components/login";
+import Cadastro from "./components/cadastro";
+import Depoimento from "./components/depoimento";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/indicacao" element={<Indicacao />} />
+        <Route path="/depoimento" element={<Depoimento />} />
         <Route path="/cadastro" element={<Cadastro />} />
       </Routes>
       <Cadastro />
