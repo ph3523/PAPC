@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Header from './components/header';
 import Login from './components/login';
 import Cadastro from './components/cadastro';
+import Footer from './components/footer.jsx'; 
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/indicacao" element={<Indicacao />} />
         <Route path="/cadastro" element={<Cadastro />} />
       </Routes>
+      
+      <Footer /> 
       <Cadastro />
     </BrowserRouter>
   );

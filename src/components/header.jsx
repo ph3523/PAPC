@@ -6,7 +6,7 @@ import { handleOpenCadastro } from "./cadastro";
 function Header() {
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg" className="justify-content-center">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/" className="mx-auto">
             <img
@@ -17,7 +17,7 @@ function Header() {
             PAPC
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/indicacao">Grupos de Apoio</Nav.Link>
