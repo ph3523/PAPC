@@ -1,20 +1,30 @@
-import React from "react";
+import React,{ useState, useEffect} from "react";
 import './indicacao.css';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
 import indicationData from '../data/indication.json';
 
 function Indicacao() {
-  // Agrupa os cards em arrays de 3 itens
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  // arroy function para verificar o tamanho da tela
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  // Agrupa os cards em arrays de 3 itens ou em arrays de 1 item se for para a resolução menor que 768px
   const groupedCards = indicationData.reduce((acc, curr, i) => {
-    if (i % 3 === 0) acc.push([]);
+    if (isMobile || i % (isMobile ? 1 : 3) === 0) acc.push([]);
     acc[acc.length - 1].push(curr);
     return acc;
   }, []);
 
   return (
     <div>
-      <h1 className="text-center mb-4">Grupos de Apoio</h1>
-      <Carousel>
+      <h1 className="text-white text-center mb-4">Grupos de Apoio</h1>
+      <Carousel data-bs-theme="dark">
         {groupedCards.map((group, idx) => (
           <Carousel.Item key={idx}>
             <Row>
