@@ -61,20 +61,56 @@ Atualmente, dois plugins oficiais estão disponíveis:
 ## Estrutura do Projeto
 
 ```
+public/
+  assets/
+    img_gp1.jpg
+    img_gp2.jpg
+    img_gp3.jpg
+    img_gp4.jpg
+    img_gp5.jpg
+    img_gp6.jpg
+    logo.svg
+src/
+  assets/
+  components/
+    Apoio.css
+    Apoio.jsx
+    cadastro.css
+    cadastro.jsx
+    depoimento.css
+    depoimento.jsx
+    footer.css
+    footer.jsx
+    header.css
+    header.jsx
+    login.css
+    login.jsx
+  data/
+    depoimentos.json
+    indication.json
+  pages/
+    styles/
+      Home.css
+    Home.jsx
+  App.css
+  App.jsx
+  index.css
+  main.jsx
 .gitignore
 eslint.config.js
 index.html
+package-lock.json
 package.json
-public/
 README.md
-src/
-  App.css
-  App.jsx
-  assets/
-  index.css
-  main.jsx
 vite.config.js
 ```
+## Responsabilidades
+
+- Pedro Barroso: Estruturação do Projeto, Criação do documento principal, criação dos componentes Apoio e Header bem como suas logicas, elaboração do README e elaboração da Logo
+- Marcelo Cardoso
+- Jose Elias
+- Kelwin Gabriel
+- Wesley Franklin
 
 ## Colaboradores
 
