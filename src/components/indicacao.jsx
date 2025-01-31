@@ -1,26 +1,55 @@
-import React from "react";
-import './indicacao.css';
+import React,{ useState, useEffect} from "react";
+import './Indicacao.css';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
 import indicationData from '../data/indication.json';
 
+const SIZE ={
+  mobile: 768,
+  medium: 940
+}
+
 function Indicacao() {
-  // Agrupa os cards em arrays de 3 itens
+  const [screenSize, setScreenSize] = useState({
+    isMobile: window.innerWidth < SIZE.mobile,
+    isMedium: window.innerWidth < SIZE.medium
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        isMobile: window.innerWidth < SIZE.mobile,
+        isMedium: window.innerWidth < SIZE.medium
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  },[]);
+
+  const getColumns = () => {
+    const { isMobile, isMedium } = screenSize;
+    if(isMobile) return 1;
+    if(isMedium) return 2;
+    return 3;
+  };
+
   const groupedCards = indicationData.reduce((acc, curr, i) => {
-    if (i % 3 === 0) acc.push([]);
+    const columns = getColumns();
+    if(i % columns === 0) acc.push([]);
     acc[acc.length - 1].push(curr);
     return acc;
-  }, []);
+  },[]);
 
   return (
     <div>
-      <h1 className="text-center mb-4">Grupos de Apoio</h1>
-      <Carousel>
+      <h1 className="text-white text-center mb-4">Grupos de Apoio</h1>
+      <Carousel data-bs-theme="dark">
         {groupedCards.map((group, idx) => (
           <Carousel.Item key={idx}>
             <Row>
               {group.map((grupo) => (
                 <Col md={4} key={grupo.id}>
-                  <Card className="m-2">
+                  <Card className="mx-4">
                     <Card.Img 
                       variant="top" 
                       src={grupo.imagem} 

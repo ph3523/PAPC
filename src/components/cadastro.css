@@ -1,0 +1,67 @@
+/* Definindo as cores principais */
+:root {
+  --primary-color: #564D90; /* Cor roxa escura */
+  --secondary-color: #A29CDB; /* Cor roxa clara */
+  --background-color: #DAD7ED; /* Cor de fundo suave */
+  --footer-bg: #F0EEF8; /* Cor de fundo para o rodapé */
+  --button-hover-color: #4E4185; /* Cor mais escura para o hover dos botões */
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 20px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Cabeçalho do Modal */
+header h2 {
+  font-size: 24px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+/* Botões do Modal */
+.modal-buttons {
+  margin-bottom: 20px;
+}
+
+.modal-buttons button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: var(--button-hover-color);
+}
+
+footer {
+  background-color: var(--footer-bg);
+  padding: 10px 0;
+  margin-top: 20px;
+  border-radius: 8px;
+}
