@@ -16,7 +16,7 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav >
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/indicacao">
+              <Nav.Link as={Link} to="/Apoio">
                 Grupos de Apoio
               </Nav.Link>
               <Nav.Link as={Link} to="/depoimento">
