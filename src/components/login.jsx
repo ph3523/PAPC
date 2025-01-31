@@ -12,6 +12,7 @@ function TelaDeLogin() {
   return (
     <div className="container">
       <div className="content">
+        <img src="../assets/logo.svg" className="align-top" alt="Logo" />
         <h1>Tela de Login</h1>
         <form id="formLogin" onSubmit={realizarLogin}>
           <input
@@ -30,7 +31,7 @@ function TelaDeLogin() {
         </form>
         <div className="links">
           <a href="#">Esqueceu a senha?</a>
-          <a href="#">Cadastre-se</a>
+          <a href="cadastro">Cadastre-se</a>
         </div>
       </div>
     </div>
