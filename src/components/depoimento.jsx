@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import "./depoimento.css";
+import "./Depoimento.css";
 import depoimentos from "../data/depoimentos.json";
 
 function Depoimento({ user, date, testimony }) {

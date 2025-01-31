@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./cadastro.css";
+import "./Cadastro.css";
 
 function Cadastro() {
   const [showCadastro, setShowCadastro] = useState(false);

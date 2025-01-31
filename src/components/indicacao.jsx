@@ -1,5 +1,5 @@
 import React,{ useState, useEffect} from "react";
-import './indicacao.css';
+import './Indicacao.css';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
 import indicationData from '../data/indication.json';
 
