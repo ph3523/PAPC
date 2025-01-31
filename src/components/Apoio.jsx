@@ -1,5 +1,5 @@
 import React,{ useState, useEffect} from "react";
-import './Indicacao.css';
+import './Apoio.css';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
 import indicationData from '../data/indication.json';
 
@@ -8,7 +8,7 @@ const SIZE ={
   medium: 940
 }
 
-function Indicacao() {
+function Apoio() {
   const [screenSize, setScreenSize] = useState({
     isMobile: window.innerWidth < SIZE.mobile,
     isMedium: window.innerWidth < SIZE.medium
@@ -81,4 +81,4 @@ function Indicacao() {
   );
 }
 
-export default Indicacao;
+export default Apoio;

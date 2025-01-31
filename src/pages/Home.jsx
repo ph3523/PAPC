@@ -1,5 +1,5 @@
 import "./styles/Home.css";
-import Indicacao from "../components/indicacao";
+import Apoio from "../components/Apoio";
 import ListaDepoimentos from "../components/depoimento";
 
 function Home() {
@@ -26,7 +26,7 @@ function Home() {
             <p>Consultas online, prescrições digitais, e muito mais.</p>
           </section>
           <section id="reviews">
-            <Indicacao></Indicacao>
+            <Apoio></Apoio>
           </section>
           <section>
             <ListaDepoimentos></ListaDepoimentos>
