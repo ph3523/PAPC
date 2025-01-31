@@ -3,23 +3,42 @@ import './indicacao.css';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
 import indicationData from '../data/indication.json';
 
+const SIZE ={
+  mobile: 768,
+  medium: 940
+}
+
 function Indicacao() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  // arroy function para verificar o tamanho da tela
+  const [screenSize, setScreenSize] = useState({
+    isMobile: window.innerWidth < SIZE.mobile,
+    isMedium: window.innerWidth < SIZE.medium
+  });
+
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setScreenSize({
+        isMobile: window.innerWidth < SIZE.mobile,
+        isMedium: window.innerWidth < SIZE.medium
+      });
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  // Agrupa os cards em arrays de 3 itens ou em arrays de 1 item se for para a resolução menor que 768px
+  },[]);
+
+  const getColumns = () => {
+    const { isMobile, isMedium } = screenSize;
+    if(isMobile) return 1;
+    if(isMedium) return 2;
+    return 3;
+  };
+
   const groupedCards = indicationData.reduce((acc, curr, i) => {
-    if (isMobile || i % (isMobile ? 1 : 3) === 0) acc.push([]);
+    const columns = getColumns();
+    if(i % columns === 0) acc.push([]);
     acc[acc.length - 1].push(curr);
     return acc;
-  }, []);
+  },[]);
 
   return (
     <div>
