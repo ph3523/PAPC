@@ -13,8 +13,8 @@ function Header() {
             PAPC
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+            <Nav >
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/indicacao">
                 Grupos de Apoio
