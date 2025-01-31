@@ -9,7 +9,7 @@ import depoimentos from "../data/depoimentos.json";
 function Depoimento({ user, date, testimony }) {
   return (
     <>
-      <Card className="card" sx={{ maxWidth: 345 }}>
+      <Card className="card" sx={{ maxWidth: 345, bgcolor: "#ffffffea" }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: "#205469" }} aria-label="recipe">
