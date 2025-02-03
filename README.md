@@ -154,7 +154,7 @@ vite.config.js
 - Marcelo Cardoso
 - José Elias: Criação do componente Depoimentos e inserção do mesmo na tela de home, fazendo os ajustes necessários no css;
 - Kelwin Gabriel
-- Wesley Franklin
+- Wesley Franklin: Realizada a implementação do cadastro e do footer, abordando tanto a estrutura visual quanto a lógica necessária para seu funcionamento adequado.
 
 ## Colaboradores
 
