@@ -4,35 +4,39 @@
 </p>
 
 # Introdução
+
 O PAPC(Plataforma de Apoio Psicológico Comunitário) é um projeto final do curso TIC20 de fullstack intemediário ministrado pelo Capacita Brasil em Conjunto com o Atlântico Avanti, nele foi utilizado as tecnologias de Html, Css, JavaScript, React e Bootstrap. Essa é uma implementação inicial do Projeto tendo em vista que em sua continuidade vai ser implementado uma integração com o banco de dados e uma api ou seja alem do Front-End o projeto terá um Back-End. O projeto por enquanto está em andamento porem logo logo terá mais atualizações, contamos com você para vizualizar o nosso resultado final.
 
 # Desafio
-Imagine que você mora em uma comunidade onde muitas pessoas enfrentam 
-dificuldades emocionais e psicológicas. Elas precisam de ajuda, mas esbarram em 
-dois grandes problemas: o custo elevado de atendimento psicológico e a falta 
-de acesso a profissionais qualificados. Por outro lado, há muitos profissionais 
-dispostos a ajudar, mas que não têm uma plataforma para oferecer seus serviços à 
-comunidade. 
+
+Imagine que você mora em uma comunidade onde muitas pessoas enfrentam
+dificuldades emocionais e psicológicas. Elas precisam de ajuda, mas esbarram em
+dois grandes problemas: o custo elevado de atendimento psicológico e a falta
+de acesso a profissionais qualificados. Por outro lado, há muitos profissionais
+dispostos a ajudar, mas que não têm uma plataforma para oferecer seus serviços à
+comunidade.
 
 # Ideia
-Vamos construir uma plataforma digital inclusiva que conecta profissionais de 
-psicologia com pessoas que precisam de apoio, promovendo acesso a atendimento 
+
+Vamos construir uma plataforma digital inclusiva que conecta profissionais de
+psicologia com pessoas que precisam de apoio, promovendo acesso a atendimento
 psicológico gratuito ou de baixo custo. Nesta plataforma:
 
-- Profissionais podem se cadastrar, oferecer atendimentos gratuitos ou a 
-preços acessíveis, e divulgar suas especialidades. 
-- Pacientes podem buscar por profissionais com filtros como região, 
-especialidade e faixa etária, e acessar informações relevantes. 
-- Um administrador gerencia o sistema, garantindo que tudo funcione de forma 
-organizada.
+- Profissionais podem se cadastrar, oferecer atendimentos gratuitos ou a
+  preços acessíveis, e divulgar suas especialidades.
+- Pacientes podem buscar por profissionais com filtros como região,
+  especialidade e faixa etária, e acessar informações relevantes.
+- Um administrador gerencia o sistema, garantindo que tudo funcione de forma
+  organizada.
 
-# O Impacto 
-- Comunidade mais forte: Facilitar o acesso a saúde mental melhora a 
-qualidade de vida e promove bem-estar. 
-- Profissionais engajados: Psicólogos têm uma forma prática de contribuir 
-para a sociedade, fortalecendo sua presença na comunidade. 
-- Sustentabilidade social: Ao oferecer serviços gratuitos e de baixo custo, a 
-plataforma equilibra solidariedade com viabilidade.
+# O Impacto
+
+- Comunidade mais forte: Facilitar o acesso a saúde mental melhora a
+  qualidade de vida e promove bem-estar.
+- Profissionais engajados: Psicólogos têm uma forma prática de contribuir
+  para a sociedade, fortalecendo sua presença na comunidade.
+- Sustentabilidade social: Ao oferecer serviços gratuitos e de baixo custo, a
+  plataforma equilibra solidariedade com viabilidade.
 
 # React + Vite
 
@@ -49,13 +53,14 @@ Certifique-se de ter o Node.js instalado na sua máquina. Você pode baixá-lo e
    git clone git@github.com:ph3523/PAPC.git
    ```
 2. Navegue até o diretório do projeto:
-    ```sh
-    cd PAPC
-    ```
+   ```sh
+   cd PAPC
+   ```
 3. Instale as dependências:
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
+
 ## Scripts Disponíveis
 
 No diretório do projeto, você pode executar:
@@ -63,6 +68,7 @@ No diretório do projeto, você pode executar:
 ```sh
 npm run dev
 ```
+
 Executa o aplicativo no modo de desenvolvimento.
 Abra http://localhost:5173/ para visualizá-lo no navegador
 
@@ -73,18 +79,19 @@ Você também verá quaisquer erros de lint no console.
 npm run build
 ```
 
-Compila o aplicativo para produção na pasta ```dist```.
+Compila o aplicativo para produção na pasta `dist`.
 Ele corretamente empacota o React no modo de produção e otimiza a construção para o melhor desempenho.
-
 
 ```sh
 npm run preview
 ```
+
 Pré-visualiza a compilação de produção localmente.
 
 ```sh
 npm run lint
 ```
+
 Executa o ESLint para verificar problemas no código.
 
 ## Plugins Oficiais
@@ -140,11 +147,12 @@ package.json
 README.md
 vite.config.js
 ```
-## Responsabilidades da Equipe 1 
+
+## Responsabilidades da Equipe 1
 
 - Pedro Barroso: Estruturação do Projeto, Criação do documento principal, criação dos componentes Apoio e Header bem como suas logicas, elaboração do README e elaboração da Logo
 - Marcelo Cardoso
-- Jose Elias
+- José Elias: Criação do componente Depoimentos e inserção do mesmo na tela de home, fazendo os ajustes necessários no css;
 - Kelwin Gabriel
 - Wesley Franklin
 
