@@ -153,7 +153,7 @@ vite.config.js
 - Pedro Barroso: Estruturação do Projeto, Criação do documento principal, criação dos componentes Apoio e Header bem como suas logicas, elaboração do README e elaboração da Logo
 - Marcelo Cardoso
 - José Elias: Criação do componente Depoimentos e inserção do mesmo na tela de home, fazendo os ajustes necessários no css;
-- Kelwin Gabriel
+- Kelwin Gabriel: Realização da criação da tela de Login, fazendo toda logística necessária e ajustes visuais com uso do css.
 - Wesley Franklin: Realizada a implementação do cadastro e do footer, abordando tanto a estrutura visual quanto a lógica necessária para seu funcionamento adequado.
 
 ## Colaboradores
