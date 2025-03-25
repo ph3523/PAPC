@@ -1,5 +1,5 @@
 import React from 'react';
-import './footer.css';
+import './Footer.css';
 
 const Footer = () => {
   return (
@@ -12,8 +12,6 @@ const Footer = () => {
             <li><a href="#">Consulta de vídeo - Teleconsulta</a></li>
             <li><a href="#">Carreiras</a></li>
             <li><a href="#">Imprensa</a></li>
-            <li><a href="#">PAPC Japão</a></li>
-            <li><a href="#">PAPC Itália</a></li>
             <li><a href="#">Saúde</a></li>
             <li><a href="#">Para os profissionais de saúde</a></li>
             <li><a href="#">Comunidade PAPC</a></li>

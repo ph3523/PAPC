@@ -6,12 +6,13 @@
   padding: 50px 0;
 }
 
-.card {
+.card_dep {
   border: 1px solid transparent;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.card:hover {
+.card_dep:hover {
   border-color: #205469;
+  background-color: white;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }

@@ -3,13 +3,13 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import "./depoimento.css";
+import "./Depoimento.css";
 import depoimentos from "../data/depoimentos.json";
 
 function Depoimento({ user, date, testimony }) {
   return (
     <>
-      <Card className="card" sx={{ maxWidth: 345 }}>
+      <Card className="card_dep" sx={{ maxWidth: 345, bgcolor: "#ffffffea" }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: "#205469" }} aria-label="recipe">

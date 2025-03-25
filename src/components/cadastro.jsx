@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import "./cadastro.css";
+import "./Cadastro.css";
 
 function Cadastro() {
   const [showCadastro, setShowCadastro] = useState(false);
   const [showPaciente, setShowPaciente] = useState(false);
   const [showProfissional, setShowProfissional] = useState(false);
+  const [pacienteNome, setPacienteNome] = useState("");
+  const [pacienteEmail, setPacienteEmail] = useState("");
+  const [pacienteSenha, setPacienteSenha] = useState("");
 
   Cadastro.handleOpenCadastro = () => setShowCadastro(true);
   const handleCloseCadastro = () => setShowCadastro(false);
@@ -59,12 +62,54 @@ function Cadastro() {
                 <header>
                   <h2>Cadastro de Paciente</h2>
                 </header>
-                <form>
-                  <input type="text" placeholder="Nome" />
-                  <input type="email" placeholder="E-mail" />
-                  <input type="password" placeholder="Senha" />
-                  <button type="submit">Cadastrar</button>
-                </form>
+                <form onSubmit={async (e) => {
+                 e.preventDefault();
+
+  const response = await fetch("http://localhost:3001/usuarios", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nome_usuario: pacienteNome,
+      email: pacienteEmail,
+      senha: pacienteSenha,
+      tipo: "PACIENTE"
+    }),
+  });
+
+  const data = await response.json();
+
+  if (response.ok) {
+    alert("Cadastro realizado com sucesso!");
+    setPacienteNome("");
+    setPacienteEmail("");
+    setPacienteSenha("");
+    setShowPaciente(false);
+  } else {
+    alert(`Erro ao cadastrar: ${data.error || "erro desconhecido"}`);
+  }
+}}>
+  <input
+    type="text"
+    placeholder="Nome"
+        value={pacienteNome}
+    onChange={(e) => setPacienteNome(e.target.value)}
+  />
+  <input
+    type="email"
+    placeholder="E-mail"
+        value={pacienteEmail}
+    onChange={(e) => setPacienteEmail(e.target.value)}
+  />
+  <input
+    type="password"
+    placeholder="Senha"
+    value={pacienteSenha}
+    onChange={(e) => setPacienteSenha(e.target.value)}
+  />
+      <button type="submit">Cadastrar</button>
+    </form>
                 <footer>
                   <button
                     className="close-button"

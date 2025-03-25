@@ -12,7 +12,8 @@
 
 /* Modal Overlay */
 .modal-overlay {
-  position: fixed;
+  position: relative;
+  min-height: 80vh;
   top: 0;
   left: 0;
   right: 0;
