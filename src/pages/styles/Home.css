@@ -1,54 +1,74 @@
 /* Home.css */
 :root {
---color-white: #fff;
---color-gray1: #9FB3B7;
---color-gray2: #d9d9d9;
---color-blue1: #205469;
---color-blue2: #6a9e9e;
---color-green1: #799f73;
---color-green2: #94b290;
-  }
+  --color-white: #fff;
+  --color-gray1: #9fb3b7;
+  --color-gray2: #d9d9d9;
+  --color-blue1: #205469;
+  --color-blue2: #6a9e9e;
+  --color-green1: #799f73;
+  --color-green2: #94b290;
+}
 
-  h1 {
-    text-align: center;
-  }
-  section {
-    padding: 20px;
-    margin: 20px;
-  }
-  
-  button {
-    background-color:var(--color-blue2);
-    color: white;
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: var(--color-blue1);
-  }
-    
+h1 {
+  text-align: center;
+}
+section {
+  padding: 20px;
+  margin: 20px;
+}
+
+button {
+  background-color: var(--color-blue2);
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+}
+
+button:hover {
+  background-color: var(--color-blue1);
+}
+
+#actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.action-item {
+  flex: 1;
+  margin: 10px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-right: 10px;
+}
+
+section#services,
+section#reviews {
+  background-color: var(--color-blue2);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 798px) {
   #actions {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+  }
+  .action-item {
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
-  
-  .action-item {
-    flex: 1;
-    margin: 10px;
+}
+
+@media (max-width: 461px) {
+  h1 {
+    font-size: 2.5rem;
   }
-  
-  input[type="text"] {
-    padding: 10px;
-    margin-right: 10px;
-  }
-  
-  section#services, section#reviews {
-    background-color:var(--color-blue2);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+}

@@ -16,3 +16,9 @@
   background-color: white;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 352px) {
+  .lista-depoimentos {
+    padding: 20px 10px;
+  }
+}
