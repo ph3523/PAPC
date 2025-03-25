@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Cadastro.css";
-
+import { cadastrarUsuario } from "../services/usuarioService";
 function Cadastro() {
   const [showCadastro, setShowCadastro] = useState(false);
   const [showPaciente, setShowPaciente] = useState(false);
@@ -54,31 +54,23 @@ function Cadastro() {
               <h2>Cadastro de Paciente</h2>
             </header>
             <form onSubmit={async (e) => {
-             e.preventDefault();
+  e.preventDefault();
 
-  const response = await fetch("http://localhost:3001/usuarios", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      nome_usuario: pacienteNome,
-      email: pacienteEmail,
-      senha: pacienteSenha,
-      tipo: "PACIENTE"
-    }),
+  const { ok, data } = await cadastrarUsuario({
+    nome_usuario: pacienteNome,
+    email: pacienteEmail,
+    senha: pacienteSenha,
+    tipo: "PACIENTE"
   });
 
-  const data = await response.json();
-
-  if (response.ok) {
+  if (ok) {
     alert("Cadastro realizado com sucesso!");
     setPacienteNome("");
     setPacienteEmail("");
     setPacienteSenha("");
     setShowPaciente(false);
   } else {
-    alert(`Erro ao cadastrar: ${data.error || "erro desconhecido"}`);
+    alert(`Erro ao cadastrar: ${data.error || "Erro desconhecido"}`);
   }
 }}>
   <input
