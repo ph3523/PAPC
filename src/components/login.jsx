@@ -1,5 +1,4 @@
 import "./login.css";
-import { Link } from 'react-router-dom';
 
 function TelaDeLogin() {
   const realizarLogin = (e) => {

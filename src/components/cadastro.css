@@ -1,11 +1,14 @@
 /* Definindo as cores principais */
 :root {
-  --primary-color: #564D90; /* Cor roxa escura */
-  --secondary-color: #A29CDB; /* Cor roxa clara */
-  --background-color: #DAD7ED; /* Cor de fundo suave */
-  --footer-bg: #F0EEF8; /* Cor de fundo para o rodapé */
-  --button-hover-color: #4E4185; /* Cor mais escura para o hover dos botões */
-}
+--color-white: #fff;
+--color-gray1: #9FB3B7;
+--color-gray2: #d9d9d9;
+--color-blue1: #205469;
+--color-blue2: #6a9e9e;
+--color-green1: #799f73;
+--color-green2: #94b290;
+  }
+
 
 /* Modal Overlay */
 .modal-overlay {
@@ -26,15 +29,35 @@
   background-color: var(--background-color);
   border-radius: 8px;
   padding: 20px;
-  width: 400px;
+  height: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+/* Container principal */
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 100px;
+}
+
+/* Caixa de login */
+.content2 {
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  background-color: linear-gradient(to-right, #94b290, #205469);
 }
 
 /* Cabeçalho do Modal */
 header h2 {
   font-size: 24px;
-  color: var(--primary-color);
+  color: var(--color-green1);
   margin-bottom: 20px;
 }
 
@@ -44,7 +67,7 @@ header h2 {
 }
 
 .modal-buttons button {
-  background-color: var(--primary-color);
+  background-color: var(--color-blue1);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -56,11 +79,11 @@ header h2 {
 }
 
 .modal-buttons button:hover {
-  background-color: var(--button-hover-color);
+  background-color: var(--color-blue2);
 }
 
 footer {
-  background-color: var(--footer-bg);
+  background-color: var();
   padding: 10px 0;
   margin-top: 20px;
   border-radius: 8px;
