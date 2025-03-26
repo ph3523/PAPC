@@ -1,19 +1,51 @@
+import axios from 'axios';
 
+// Configuração base do Axios
+const api = axios.create({
+  baseURL: 'http://localhost:3001',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
 
 export async function cadastrarUsuario(usuario) {
-    try {
-      const response = await fetch("http://localhost:3001/usuarios", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(usuario),
-      });
-  
-      const data = await response.json();
-      return { ok: response.ok, data };
-    } catch (error) {
-      console.error("Erro ao cadastrar usuário:", error);
-      return { ok: false, data: { error: "Erro ao se comunicar com o servidor" } };
-    }
+  try {
+    const response = await api.post('/usuarios', usuario);
+    return { ok: true, data: response.data };
+  } catch (error) {
+    console.error("Erro ao cadastrar usuário:", error);
+    
+    // Obtém dados de erro da resposta, se existirem
+    const errorData = error.response?.data || { error: "Erro ao se comunicar com o servidor" };
+    return { ok: false, data: errorData };
   }
+}
+
+export async function loginUsuario(credenciais) {
+  try {
+    const response = await api.post('/auth/login', credenciais);
+
+    if (response.data.token) {
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('usuario', JSON.stringify(response.data.usuario));
+    }
+    
+    return { ok: true, data: response.data };
+
+  }
+  catch (error) {
+    console.error("Erro ao fazer login:", error);
+
+    const errorData = error.response?.data || { error: "Erro ao se comunicar com o servidor" };
+    return { ok: false, data: errorData };
+  }
+}
+
+export function isLoggedIn() {
+  return localStorage.getItem('token') !== null;
+}
+
+export function logout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('usuario');
+}
