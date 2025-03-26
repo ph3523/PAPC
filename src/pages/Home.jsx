@@ -1,7 +1,7 @@
 import "./styles/Home.css";
 import Apoio from "../components/Apoio";
 import ListaDepoimentos from "../components/depoimento";
-
+import FormDepoimento from "../components/FormDepoimento"
 function Home() {
   return (
     <>
@@ -28,9 +28,15 @@ function Home() {
           <section id="reviews">
             <Apoio></Apoio>
           </section>
-          <section>
-            <ListaDepoimentos></ListaDepoimentos>
-          </section>
+          <section id="depoimentos">
+  <h2>Deixe seu depoimento</h2>
+
+
+  <FormDepoimento pacienteId={1} />
+
+  <ListaDepoimentos />
+</section>
+          
         </main>
       </div>
     </>
