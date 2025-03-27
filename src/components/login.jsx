@@ -58,12 +58,16 @@ function Login() {
             type="email"
             name="email"
             placeholder="Digite seu e-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
             type="password"
             name="senha"
             placeholder="Digite sua senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
             required
           />
           <button type="submit">Entrar</button>
