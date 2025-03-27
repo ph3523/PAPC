@@ -1,41 +1,47 @@
 import "./Login.css";
-import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { getUsuario, loginUsuario } from "../services/usuarioService";
 
-function TelaDeLogin() {
+function Login() {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
-  const [erro, setErro] = useState("");
 
   const realizarLogin = async (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const senha = e.target.senha.value;
+    setError('');
 
     try {
-      const response = await fetch("http://localhost:3001/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("tipo", data.tipo);
-        localStorage.setItem("usuarioId", data.id);
-        localStorage.setItem("nome", data.nome_usuario)
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("tipo", data.tipo);
-        localStorage.setItem("usuarioId", data.id);
-        alert("Login realizado com sucesso!");
-        navigate("/");
+      console.log("Tentando login com:", { email, senha });
+      const { ok, data } = await loginUsuario({ email, senha });
+  
+      if (ok) {
+        console.log("Dados retornados do login:", data);
+        
+        if (data.usuario && data.usuario.nome_usuario) {
+          alert(`Bem-vindo, ${data.usuario.nome_usuario}!`);
+        } else {
+          // Tentar buscar dados adicionais
+          const userInfo = await getUsuario();
+          console.log("Dados de userInfo:", userInfo);
+          
+          if (userInfo.ok) {
+            alert(`Bem-vindo, ${userInfo.data.nome_usuario || 'usuário'}!`);
+          } else {
+            alert(`Bem-vindo ao sistema!`);
+          }
+        }
+  
+        navigate('/');
       } else {
-        setErro(data.error || "Erro ao fazer login");
+        setError(data.error || "Credenciais inválidas");
       }
-    } catch (err) {
-      console.error("Erro ao logar:", err);
-      setErro("Erro inesperado ao tentar logar.");
+    }
+    catch (error) {
+      console.error("Erro no login:", error);
+      setError("Ocorreu um erro. Tente novamente.");
     }
   };
 
@@ -44,19 +50,32 @@ function TelaDeLogin() {
       <div className="content">
         <img src="../assets/logo.svg" className="align-top" alt="Logo" />
         <h1>Tela de Login</h1>
+
+        {error && <div className="error">{error}</div>}
+
         <form id="formLogin" onSubmit={realizarLogin}>
-          <input type="email" name="email" placeholder="Digite seu e-mail" required />
-          <input type="password" name="senha" placeholder="Digite sua senha" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="Digite seu e-mail"
+            required
+          />
+          <input
+            type="password"
+            name="senha"
+            placeholder="Digite sua senha"
+            required
+          />
           <button type="submit">Entrar</button>
         </form>
         {erro && <p style={{ color: "red" }}>{erro}</p>}
         <div className="links">
           <a href="#">Esqueceu a senha?</a>
-          <a href="cadastro">Cadastre-se</a>
+          <Link to="/cadastro">Cadastre-se</Link>
         </div>
       </div>
     </div>
   );
 }
 
-export default TelaDeLogin;
+export default Login;
