@@ -1,4 +1,4 @@
-import "./Login.css";
+import "./login.css";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { getUsuario, loginUsuario } from "../services/usuarioService";
@@ -51,7 +51,7 @@ function Login() {
         <img src="../assets/logo.svg" className="align-top" alt="Logo" />
         <h1>Tela de Login</h1>
 
-        {error && <div className="error">{error}</div>}
+        {error && <div className="error-message">{error}</div>}
 
         <form id="formLogin" onSubmit={realizarLogin}>
           <input
@@ -72,7 +72,7 @@ function Login() {
           />
           <button type="submit">Entrar</button>
         </form>
-        {erro && <p style={{ color: "red" }}>{erro}</p>}
+        
         <div className="links">
           <a href="#">Esqueceu a senha?</a>
           <Link to="/cadastro">Cadastre-se</Link>
