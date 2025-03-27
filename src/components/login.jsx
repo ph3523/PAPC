@@ -1,7 +1,7 @@
 import "./Login.css";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import { loginUsuario } from "../services/usuarioService";
+import { getUsuario, loginUsuario } from "../services/usuarioService";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -13,13 +13,35 @@ function Login() {
     e.preventDefault();
     setError('');
 
-    const { ok, data } = await loginUsuario({ email, senha });
-    console.log(data);
-    if (ok) {
-      alert(`Bem-vindo, ${data.nome_usuario}!`);
-      navigate('/');
-    } else {
-      setError(data.error || "Credenciais inválidas");
+    try {
+      console.log("Tentando login com:", { email, senha });
+      const { ok, data } = await loginUsuario({ email, senha });
+  
+      if (ok) {
+        console.log("Dados retornados do login:", data);
+        
+        if (data.usuario && data.usuario.nome_usuario) {
+          alert(`Bem-vindo, ${data.usuario.nome_usuario}!`);
+        } else {
+          // Tentar buscar dados adicionais
+          const userInfo = await getUsuario();
+          console.log("Dados de userInfo:", userInfo);
+          
+          if (userInfo.ok) {
+            alert(`Bem-vindo, ${userInfo.data.nome_usuario || 'usuário'}!`);
+          } else {
+            alert(`Bem-vindo ao sistema!`);
+          }
+        }
+  
+        navigate('/');
+      } else {
+        setError(data.error || "Credenciais inválidas");
+      }
+    }
+    catch (error) {
+      console.error("Erro no login:", error);
+      setError("Ocorreu um erro. Tente novamente.");
     }
   };
 

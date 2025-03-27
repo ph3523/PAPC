@@ -41,6 +41,36 @@ export async function loginUsuario(credenciais) {
   }
 }
 
+export async function getUsuario(id){
+
+  try{
+
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      return { ok: false, data: { error: "Usuário não autenticado" } };
+    }
+  
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    };
+  
+    const endpoint = id ? `/usuarios/${id}` : '/usuarios/me';
+  
+    const response = await api.get(endpoint, config);
+
+    return { ok: true, data: response.data };
+  }
+  catch (error) {
+    console.error("Erro ao obter usuário:", error);
+  
+    const errorData = error.response?.data || { error: "Erro ao se comunicar com o servidor" };
+    return { ok: false, data: errorData };
+  }
+}
+
 export function isLoggedIn() {
   return localStorage.getItem('token') !== null;
 }
