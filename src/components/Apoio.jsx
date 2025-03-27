@@ -1,7 +1,7 @@
 import React,{ useState, useEffect} from "react";
 import './Apoio.css';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
-import indicationData from '../data/indication.json';
+import { listarGruposApoio } from "../services/grupoApoioService"; 
 
 const SIZE ={
   mobile: 768,
@@ -13,8 +13,50 @@ function Apoio() {
     isMobile: window.innerWidth < SIZE.mobile,
     isMedium: window.innerWidth < SIZE.medium
   });
+  const [gruposApoio, setGruposApoio] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
 
   useEffect(() => {
+    async function FetchGruposApoio() {
+      setLoading(true);
+
+      try {
+        const { ok, data } = await listarGruposApoio();
+        if (!ok) {
+          const gruposMapeados = data.map(grupo => ({
+            id: grupo.id,
+            nome: grupo.nome,
+            descricao: grupo.descricao,
+            endereco: grupo.local,
+            horarios: grupo.horario,
+            tipoAtendimento: grupo.tipo_atendimento,
+            gratuito: grupo.gratuito,
+            valorMensal: !grupo.gratuito ? grupo.valor : null,
+            publicoAlvo: grupo.publico_alvo,
+            // Use uma imagem padrão para todos os grupos ou crie uma lógica para relacionar imagens
+            imagem: `../assets/img_gp${Math.floor(Math.random() * 6) + 1}.jpg`
+          }));
+
+          setGruposApoio(gruposMapeados);
+        }
+        else {
+          setError(data.error || "Erro ao carregar os grupos de apoio.");
+        }
+
+      }
+      catch (error) {
+        console.error("Erro ao buscar grupos de apoio:", error);
+        setError("Erro ao carregar os grupos de apoio.");
+      }
+      finally {
+        setLoading(false);
+      }
+    }
+
+    fetchGruposApoio();
+
     const handleResize = () => {
       setScreenSize({
         isMobile: window.innerWidth < SIZE.mobile,
@@ -39,6 +81,8 @@ function Apoio() {
     acc[acc.length - 1].push(curr);
     return acc;
   },[]);
+
+  if (loading) return <div className="text-center">Carregando grupos de apoio...</div>;
 
   return (
     <div>
