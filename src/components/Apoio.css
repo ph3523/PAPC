@@ -2,6 +2,10 @@
   height: 100%;
 }
 
+.carousel {
+  padding: 20px 0;
+}
+
 @media (max-width: 940px) {
   .carousel-item .row {
     display: flex;
