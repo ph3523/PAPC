@@ -9,6 +9,23 @@
   --color-green2: #94b290;
 }
 
+
+#banner {
+  display: flex;
+  flex-direction: column; /* Empilha os elementos verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Alinha o texto no centro */
+  justify-content: center; /* Centraliza verticalmente */
+  margin-top: 50px; /* Ajuste conforme necessário */
+}
+
+.logo {
+  width: 180px; /* Ajuste conforme necessário */
+  height: auto; /* Mantém a proporção */
+  margin-bottom: 20px; /* Espaço entre a imagem e o texto */
+}
+
+
 h2 {
   text-align: center;
   color: var(--color-white);

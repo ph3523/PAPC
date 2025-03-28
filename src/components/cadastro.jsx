@@ -3,137 +3,198 @@ import "./Cadastro.css";
 
 function Cadastro() {
   const [showCadastro, setShowCadastro] = useState(false);
-  const [showPaciente, setShowPaciente] = useState(false);
-  const [showProfissional, setShowProfissional] = useState(false);
-  const [pacienteNome, setPacienteNome] = useState("");
-  const [pacienteEmail, setPacienteEmail] = useState("");
-  const [pacienteSenha, setPacienteSenha] = useState("");
+  const [step, setStep] = useState(1);
+  const [paciente, setPaciente] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    dataNascimento: "",
+    genero: "",
+    endereco: "",
+    telefone: "",
+  });
+  const [profissional, setProfissional] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    crm: "",
+    especialidade: "",
+    localizacao: "",
+  });
 
-  Cadastro.handleOpenCadastro = () => setShowCadastro(true);
-  const handleCloseCadastro = () => setShowCadastro(false);
+  const handleNextStep = () => setStep(step + 1);
+  const handlePrevStep = () => setStep(step - 1);
 
-  const handleOpenPaciente = () => {
-    setShowPaciente(true);
-    setShowCadastro(false);
+  const handleChange = (e, setState) => {
+    setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  const handleClosePaciente = () => setShowPaciente(false);
-
-  const handleOpenProfissional = () => {
-    setShowProfissional(true);
-    setShowCadastro(false);
-  };
-  const handleCloseProfissional = () => setShowProfissional(false);
-
-  if (!showCadastro && !showPaciente && !showProfissional) return null;
 
   return (
     <>
+      <button onClick={() => setShowCadastro(true)}>Cadastrar</button>
       {showCadastro && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <header>
-              <h2>Escolha o tipo de cadastro</h2>
-            </header>
-            <section className="modal-buttons">
-              <button onClick={handleOpenPaciente}>Paciente</button>
-              <button onClick={handleOpenProfissional}>Profissional</button>
-            </section>
-            <footer>
-              <button className="close-button" onClick={handleCloseCadastro}>
-                Fechar
-              </button>
-            </footer>
+            {step === 1 && (
+              <>
+                <h2>Escolha o tipo de cadastro</h2>
+                <button onClick={() => setStep(2)}>Paciente</button>
+                <button onClick={() => setStep(5)}>Profissional</button>
+              </>
+            )}
+
+            {step === 2 && (
+              <>
+                <h2>Cadastro de Paciente</h2>
+                <input
+                  type="text"
+                  name="nome"
+                  placeholder="Nome"
+                  value={paciente.nome}
+                  onChange={(e) => handleChange(e, setPaciente)}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  value={paciente.email}
+                  onChange={(e) => handleChange(e, setPaciente)}
+                />
+                <input
+                  type="password"
+                  name="senha"
+                  placeholder="Senha"
+                  value={paciente.senha}
+                  onChange={(e) => handleChange(e, setPaciente)}
+                />
+                <button onClick={handleNextStep}>Próximo</button>
+              </>
+            )}
+
+            {step === 3 && (
+              <>
+                <h2>Mais Informações</h2>
+                <input
+                  type="date"
+                  name="dataNascimento"
+                  value={paciente.dataNascimento}
+                  onChange={(e) => handleChange(e, setPaciente)}
+                />
+                <input
+                  type="text"
+                  name="genero"
+                  placeholder="Gênero"
+                  value={paciente.genero}
+                  onChange={(e) => handleChange(e, setPaciente)}
+                />
+                <button onClick={handlePrevStep}>Voltar</button>
+                <button onClick={handleNextStep}>Próximo</button>
+              </>
+            )}
+
+            {step === 4 && (
+              <>
+                <h2>Contato</h2>
+                <input
+                  type="text"
+                  name="endereco"
+                  placeholder="Endereço"
+                  value={paciente.endereco}
+                  onChange={(e) => handleChange(e, setPaciente)}
+                />
+                <input
+                  type="text"
+                  name="telefone"
+                  placeholder="Telefone"
+                  value={paciente.telefone}
+                  onChange={(e) => handleChange(e, setPaciente)}
+                />
+                <button onClick={handlePrevStep}>Voltar</button>
+                <button onClick={() => alert("Cadastro realizado!")}>
+                  Cadastrar
+                </button>
+              </>
+            )}
+
+            {step === 5 && (
+              <>
+                <h2>Cadastro de Profissional</h2>
+                <input
+                  type="text"
+                  name="nome"
+                  placeholder="Nome"
+                  value={profissional.nome}
+                  onChange={(e) => handleChange(e, setProfissional)}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  value={profissional.email}
+                  onChange={(e) => handleChange(e, setProfissional)}
+                />
+                <input
+                  type="password"
+                  name="senha"
+                  placeholder="Senha"
+                  value={profissional.senha}
+                  onChange={(e) => handleChange(e, setProfissional)}
+                />
+                <button onClick={handleNextStep}>Próximo</button>
+              </>
+            )}
+
+            {step === 6 && (
+              <>
+                <h2>Informações Profissionais</h2>
+                <input
+                  type="text"
+                  name="crm"
+                  placeholder="CRM"
+                  value={profissional.crm}
+                  onChange={(e) => handleChange(e, setProfissional)}
+                />
+                <input
+                  type="text"
+                  name="especialidade"
+                  placeholder="Especialidade"
+                  value={profissional.especialidade}
+                  onChange={(e) => handleChange(e, setProfissional)}
+                />
+                <button onClick={handlePrevStep}>Voltar</button>
+                <button onClick={handleNextStep}>Próximo</button>
+              </>
+            )}
+
+            {step === 7 && (
+              <>
+                <h2>Localização</h2>
+                <input
+                  type="text"
+                  name="localizacao"
+                  placeholder="Localização"
+                  value={profissional.localizacao}
+                  onChange={(e) => handleChange(e, setProfissional)}
+                />
+                <button onClick={handlePrevStep}>Voltar</button>
+                <button onClick={() => alert("Cadastro realizado!")}>
+                  Cadastrar
+                </button>
+              </>
+            )}
+
+            <button
+              className="close-button"
+              onClick={() => setShowCadastro(false)}
+            >
+              Fechar
+            </button>
           </div>
-        </div>
-      )}
-
-      {showPaciente && (
-        <div className="modal-overlay">
-          <section className="modal-content">
-            <header>
-              <h2>Cadastro de Paciente</h2>
-            </header>
-            <form onSubmit={async (e) => {
-             e.preventDefault();
-
-  const response = await fetch("http://localhost:3001/usuarios", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      nome_usuario: pacienteNome,
-      email: pacienteEmail,
-      senha: pacienteSenha,
-      tipo: "PACIENTE"
-    }),
-  });
-
-  const data = await response.json();
-
-  if (response.ok) {
-    alert("Cadastro realizado com sucesso!");
-    setPacienteNome("");
-    setPacienteEmail("");
-    setPacienteSenha("");
-    setShowPaciente(false);
-  } else {
-    alert(`Erro ao cadastrar: ${data.error || "erro desconhecido"}`);
-  }
-}}>
-  <input
-    type="text"
-    placeholder="Nome"
-    value={pacienteNome}
-    onChange={(e) => setPacienteNome(e.target.value)}
-  />
-  <input
-    type="email"
-    placeholder="E-mail"
-    value={pacienteEmail}
-    onChange={(e) => setPacienteEmail(e.target.value)}
-  />
-  <input
-    type="password"
-    placeholder="Senha"
-    value={pacienteSenha}
-    onChange={(e) => setPacienteSenha(e.target.value)}
-  />
-  <button type="submit">Cadastrar</button>
-</form>
-            <footer>
-              <button className="close-button" onClick={handleClosePaciente}>Fechar</button>
-            </footer>
-          </section>
-        </div>
-      )}
-
-      {showProfissional && (
-        <div className="modal-overlay">
-          <section className="modal-content">
-            <header>
-              <h2>Cadastro de Profissional</h2>
-            </header>
-            <form>
-              <input type="text" placeholder="Nome" />
-              <input type="email" placeholder="E-mail" />
-              <input type="password" placeholder="Senha" />
-              <input type="text" placeholder="Especialidade" />
-              <input type="text" placeholder="Localização" />
-              <input type="text" placeholder="Faixa Etária de Atendimento" />
-              <input type="number" placeholder="Quantidade de Atendimentos Gratuitos" />
-              <input type="file" />
-              <button type="submit">Cadastrar</button>
-            </form>
-            <footer>
-              <button className="close-button" onClick={handleCloseProfissional}>Fechar</button>
-            </footer>
-          </section>
         </div>
       )}
     </>
   );
-};
+}
 
 export default Cadastro;
 export const handleOpenCadastro = () => Cadastro.handleOpenCadastro();

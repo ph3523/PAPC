@@ -4,7 +4,7 @@ import Apoio from "./components/Apoio.jsx";
 import Home from "./pages/Home";
 import Header from "./components/header";
 import Login from "./components/login";
-import Cadastro, { handleOpenCadastro } from "./components/cadastro";
+import Cadastro, { handleOpenCadastro } from "./components/cadastro.jsx";
 import Depoimento from "./components/depoimento";
 
 import Footer from './components/footer.jsx'; 

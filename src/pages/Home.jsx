@@ -14,6 +14,7 @@ function Home() {
       <div className="home">
         <main>
           <section id="banner">
+            <img src="../assets/logo.svg" className="logo" alt="Logo" />
             <Typography variant="h2">Bem-vindo ao PAPC</Typography>
           </section>
           <section id="actions">

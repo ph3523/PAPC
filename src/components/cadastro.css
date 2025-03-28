@@ -1,68 +1,131 @@
-/* Definindo as cores principais */
+/* Definição de Cores */
 :root {
-  --primary-color: #564D90; /* Cor roxa escura */
-  --secondary-color: #A29CDB; /* Cor roxa clara */
-  --background-color: #DAD7ED; /* Cor de fundo suave */
-  --footer-bg: #F0EEF8; /* Cor de fundo para o rodapé */
-  --button-hover-color: #4E4185; /* Cor mais escura para o hover dos botões */
+  --color-white: #fff;
+  --color-gray1: #9FB3B7;
+  --color-gray2: #d9d9d9;
+  --color-blue1: #205469;
+  --color-blue2: #6a9e9e;
+  --color-green1: #799f73;
+  --color-green2: #94b290;
+  --color-dark: #1e1e1e;
 }
 
 /* Modal Overlay */
 .modal-overlay {
-  position: relative;
-  min-height: 80vh;
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-/* Conteúdo do Modal */
+/* Estilização do Modal */
 .modal-content {
-  background-color: var(--background-color);
-  border-radius: 8px;
-  padding: 20px;
-  width: 400px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--color-green1), var(--color-blue1));
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
+  color: var(--color-white);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Cabeçalho do Modal */
+/* Animação de Entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Título do Modal */
 header h2 {
-  font-size: 24px;
-  color: var(--primary-color);
-  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--color-white);
 }
 
 /* Botões do Modal */
 .modal-buttons {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .modal-buttons button {
-  background-color: var(--primary-color);
-  color: #fff;
+  background: var(--color-blue2);
+  color: var(--color-white);
   border: none;
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 5px;
+  padding: 12px;
   font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
+  font-weight: bold;
 }
 
 .modal-buttons button:hover {
-  background-color: var(--button-hover-color);
+  background: var(--color-blue1);
 }
 
-footer {
-  background-color: var(--footer-bg);
-  padding: 10px 0;
-  margin-top: 20px;
-  border-radius: 8px;
+/* Formulários */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: var(--color-gray2);
+  color: var(--color-dark);
+}
+
+/* Checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-white);
+}
+
+.checkbox-container input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-blue1);
+}
+
+/* Botão Fechar */
+.close-button {
+  background-color: var(--color-gray1);
+  color: var(--color-dark);
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.close-button:hover {
+  background-color: var(--color-gray2);
 }
