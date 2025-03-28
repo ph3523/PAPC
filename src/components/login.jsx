@@ -14,29 +14,30 @@ function Login() {
     setError('');
 
     try {
-      console.log("Tentando login com:", { email, senha });
       const { ok, data } = await loginUsuario({ email, senha });
   
       if (ok) {
-        console.log("Dados retornados do login:", data);
-        
-        if (data.usuario && data.usuario.nome_usuario) {
-          alert(`Bem-vindo, ${data.usuario.nome_usuario}!`);
-        } else {
-          // Tentar buscar dados adicionais
-          const userInfo = await getUsuario();
-          console.log("Dados de userInfo:", userInfo);
+        // Se não temos o nome do usuário salvo ainda
+        if (!localStorage.getItem('nome') && data.usuario?.id) {
+          // Buscar informações adicionais do usuário
+          const userInfo = await getUsuario(data.usuario.id);
           
           if (userInfo.ok) {
-            alert(`Bem-vindo, ${userInfo.data.nome_usuario || 'usuário'}!`);
-          } else {
-            alert(`Bem-vindo ao sistema!`);
+            localStorage.setItem('nome', userInfo.data.nome_usuario || '');
+            localStorage.setItem('tipo', userInfo.data.tipo || '');
+            localStorage.setItem('usuarioId', userInfo.data.id || '');
+            
+            // Dispara o evento para notificar outras partes da aplicação
+            window.dispatchEvent(new Event('loginStatusChanged'));
           }
         }
-  
+        
+        // Mostra uma mensagem de boas-vindas
+        alert(`Bem-vindo, ${localStorage.getItem('nome') || 'usuário'}!`);
+        
+        // Navega para a página inicial
         navigate('/');
       } else {
-        console.error("Erro ao logar:", error);
         setError(data.error || "Credenciais inválidas");
       }
     }

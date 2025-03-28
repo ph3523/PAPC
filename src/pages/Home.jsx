@@ -9,14 +9,29 @@ function Home() {
   const [pacienteId, setPacienteId] = useState(null);
 
   useEffect(() => {
-    const nome = localStorage.getItem("nome");
-    const id = localStorage.getItem("usuarioId");
-    const tipo = localStorage.getItem("tipo");
 
-    if (nome && tipo === "PACIENTE") {
-      setNomeUsuario(nome);
-      setPacienteId(parseInt(id));
-    }
+    const updateUserData = () => {
+      const nome = localStorage.getItem("nome");
+      const id = localStorage.getItem("usuarioId");
+      const tipo = localStorage.getItem("tipo");
+
+      if (nome && tipo === "PACIENTE") {
+        setNomeUsuario(nome);
+        setPacienteId(parseInt(id));
+      } 
+      else {
+        setNomeUsuario("");
+        setPacienteId(null);
+      }
+    };
+
+    updateUserData();
+    window.addEventListener("loginStatusChanged", updateUserData);
+
+    return () => {
+      window.removeEventListener("loginStatusChanged", updateUserData);
+    };
+
   }, []);
 
   return (

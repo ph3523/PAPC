@@ -19,7 +19,14 @@ export async function loginUsuario(credenciais) {
 
     if (response.data.token) {
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('usuario', JSON.stringify(response.data.usuario));
+
+      if (response.data.usuario) {
+        localStorage.setItem('usuario', JSON.stringify(response.data.usuario));
+        localStorage.setItem('nome', response.data.usuario.nome_usuario || '');
+        localStorage.setItem('usuarioId', response.data.usuario.id || '');
+        localStorage.setItem('tipo', response.data.usuario.tipo || '');
+      }
+      window.dispatchEvent(new Event('loginStatusChanged'));
     }
     
     return { ok: true, data: response.data };
@@ -70,4 +77,9 @@ export function isLoggedIn() {
 export function logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('usuario');
+  localStorage.removeItem('nome');
+  localStorage.removeItem('usuarioId');
+  localStorage.removeItem('tipo');
+
+  window.dispatchEvent(new Event('loginStatusChanged'));
 }
