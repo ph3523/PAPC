@@ -24,10 +24,9 @@ function Home() {
       <div className="home">
         <main>
           <section id="banner">
-            <h1>Bem-vindo ao PAPC</h1>
-            {nomeUsuario && (
-              <p style={{ fontSize: "1.2rem" }}>Olá, {nomeUsuario}! </p>
-            )}
+            <h1>
+            {nomeUsuario ? `Bem-vindo, ${nomeUsuario}` : "Bem-vindo ao PAPC"}
+            </h1>
           </section>
 
           <section id="actions">
