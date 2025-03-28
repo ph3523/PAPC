@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import "./Apoio.css";
-import { Card, Carousel, Row, Col } from "react-bootstrap";
-import indicationData from "../data/indication.json";
+import React,{ useState, useEffect} from "react";
+import './Apoio.css';
+import { Card, Carousel, Row, Col } from 'react-bootstrap';
+import { listarGruposApoio } from "../services/grupoApoioService"; 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -18,8 +18,50 @@ function Apoio() {
     isMobile: window.innerWidth < SIZE.mobile,
     isMedium: window.innerWidth < SIZE.medium,
   });
+  const [gruposApoio, setGruposApoio] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
 
   useEffect(() => {
+    async function fetchGruposApoio() {
+      setLoading(true);
+
+      try {
+        const { ok, data } = await listarGruposApoio();
+        if (ok) {
+          const gruposMapeados = data.map(grupo => ({
+            id: grupo.id,
+            nome: grupo.nome,
+            descricao: grupo.descricao,
+            local: grupo.local,
+            horario: grupo.horario,
+            tipo_atendimento: grupo.tipo_atendimento,
+            gratuito: grupo.gratuito,
+            valor: !grupo.gratuito ? grupo.valor : null,
+            publico_alvo: grupo.publico_alvo,
+            // Use uma imagem padrão para todos os grupos ou crie uma lógica para relacionar imagens
+            image: grupo.image
+          }));
+
+          setGruposApoio(gruposMapeados);
+        }
+        else {
+          setError(data.error || "Erro ao carregar os grupos de apoio.");
+        }
+
+      }
+      catch (error) {
+        console.error("Erro ao buscar grupos de apoio:", error);
+        setError("Erro ao carregar os grupos de apoio.");
+      }
+      finally {
+        setLoading(false);
+      }
+    }
+
+    fetchGruposApoio();
+
     const handleResize = () => {
       setScreenSize({
         isMobile: window.innerWidth < SIZE.mobile,
@@ -38,12 +80,14 @@ function Apoio() {
     return 3;
   };
 
-  const groupedCards = indicationData.reduce((acc, curr, i) => {
+  const groupedCards = gruposApoio.reduce((acc, curr, i) => {
     const columns = getColumns();
     if (i % columns === 0) acc.push([]);
     acc[acc.length - 1].push(curr);
     return acc;
-  }, []);
+  },[]);
+
+  if (loading) return <div className="text-center">Carregando grupos de apoio...</div>;
 
   return (
     <div>
@@ -57,9 +101,9 @@ function Apoio() {
               {group.map((grupo) => (
                 <Col md={4} key={grupo.id}>
                   <Card className="mx-4">
-                    <Card.Img
-                      variant="top"
-                      src={grupo.imagem}
+                    <Card.Img 
+                      variant="top" 
+                      src={grupo.image} 
                       alt={grupo.nome}
                     />
                     <Card.Body>
@@ -67,17 +111,14 @@ function Apoio() {
                       <Card.Text>
                         {grupo.descricao}
                         <br />
-                        <strong>Local:</strong> {grupo.endereco}
+                        <strong>Local:</strong> {grupo.local}
                         <br />
-                        <strong>Horários:</strong> {grupo.horarios}
+                        <strong>Horários:</strong> {grupo.horario}
                       </Card.Text>
                     </Card.Body>
                     <Card.Footer>
                       <small className="text-muted">
-                        {grupo.tipoAtendimento} |{" "}
-                        {grupo.gratuito
-                          ? "Gratuito"
-                          : `Valor: ${grupo.valorMensal}`}
+                        {grupo.tipo_atendimento} | {grupo.gratuito ? 'Gratuito' : `Valor: ${grupo.valor}`}
                       </small>
                     </Card.Footer>
                   </Card>
