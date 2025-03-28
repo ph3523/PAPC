@@ -27,6 +27,7 @@ const [objetivoTerapia, setObjetivoTerapia] = useState("");
   const [faixaEtaria, setFaixaEtaria] = useState("");
   const [gratuito, setGratuito] = useState(false);
   const [fotoPerfil, setFotoPerfil] = useState("");
+  const [etapaProf, setEtapaProf] = useState(1);
 
   Cadastro.handleOpenCadastro = () => setShowCadastro(true);
   const handleCloseCadastro = () => setShowCadastro(false);
@@ -126,22 +127,22 @@ const [objetivoTerapia, setObjetivoTerapia] = useState("");
       <header>
         <h2>Cadastro de Profissional</h2>
       </header>
+
       <form onSubmit={async (e) => {
         e.preventDefault();
-
         const { ok, data } = await cadastrarUsuario({
           nome_usuario: profNome,
           email: profEmail,
           senha: profSenha,
           tipo: "PROFISSIONAL",
           profissional: {
-          nome_profissional: profNome,
-          crm,
-          especialidade,
-          localizacao,
-          faixa_etaria: faixaEtaria,
-          atendimentos_gratuitos: gratuito,
-          foto_perfil: fotoPerfil || "sem-foto.jpg"
+            nome_profissional: profNome,
+            crm,
+            especialidade,
+            localizacao,
+            faixa_etaria: faixaEtaria,
+            atendimentos_gratuitos: gratuito,
+            foto_perfil: fotoPerfil || "sem-foto.jpg"
           }
         });
 
@@ -152,20 +153,39 @@ const [objetivoTerapia, setObjetivoTerapia] = useState("");
           alert(`Erro ao cadastrar: ${data.error || "Erro desconhecido"}`);
         }
       }}>
-        <input type="text" placeholder="Nome" value={profNome} onChange={(e) => setProfNome(e.target.value)} />
-        <input type="email" placeholder="E-mail" value={profEmail} onChange={(e) => setProfEmail(e.target.value)} />
-        <input type="password" placeholder="Senha" value={profSenha} onChange={(e) => setProfSenha(e.target.value)} />
-        <input type="text" placeholder="CRM" value={crm} onChange={(e) => setCrm(e.target.value)} />
-        <input type="text" placeholder="Especialidade" value={especialidade} onChange={(e) => setEspecialidade(e.target.value)} />
-        <input type="text" placeholder="Localização" value={localizacao} onChange={(e) => setLocalizacao(e.target.value)} />
-        <input type="text" placeholder="Faixa Etária de Atendimento" value={faixaEtaria} onChange={(e) => setFaixaEtaria(e.target.value)} />
-        <label>
-          Atendimento Gratuito:
-          <input type="checkbox" checked={gratuito} onChange={(e) => setGratuito(e.target.checked)} />
-        </label>
-        <input type="text" placeholder="Link da Foto de Perfil" value={fotoPerfil} onChange={(e) => setFotoPerfil(e.target.value)} />
-        <button type="submit">Cadastrar</button>
+        {etapaProf === 1 && (
+          <>
+            <input type="text" placeholder="Nome" value={profNome} onChange={(e) => setProfNome(e.target.value)} />
+            <input type="email" placeholder="E-mail" value={profEmail} onChange={(e) => setProfEmail(e.target.value)} />
+            <input type="password" placeholder="Senha" value={profSenha} onChange={(e) => setProfSenha(e.target.value)} />
+            <button type="button" onClick={() => setEtapaProf(2)}>Próximo</button>
+          </>
+        )}
+
+        {etapaProf === 2 && (
+          <>
+            <input type="text" placeholder="CRM" value={crm} onChange={(e) => setCrm(e.target.value)} />
+            <input type="text" placeholder="Especialidade" value={especialidade} onChange={(e) => setEspecialidade(e.target.value)} />
+            <input type="text" placeholder="Localização" value={localizacao} onChange={(e) => setLocalizacao(e.target.value)} />
+            <button type="button" onClick={() => setEtapaProf(1)}>Voltar</button>
+            <button type="button" onClick={() => setEtapaProf(3)}>Próximo</button>
+          </>
+        )}
+
+        {etapaProf === 3 && (
+          <>
+            <input type="text" placeholder="Faixa Etária de Atendimento" value={faixaEtaria} onChange={(e) => setFaixaEtaria(e.target.value)} />
+            <label>
+              Atendimento Gratuito:
+              <input type="checkbox" checked={gratuito} onChange={(e) => setGratuito(e.target.checked)} />
+            </label>
+            <input type="text" placeholder="Link da Foto de Perfil" value={fotoPerfil} onChange={(e) => setFotoPerfil(e.target.value)} />
+            <button type="button" onClick={() => setEtapaProf(2)}>Voltar</button>
+            <button type="submit">Cadastrar</button>
+          </>
+        )}
       </form>
+
       <footer>
         <button className="close-button" onClick={handleCloseProfissional}>Fechar</button>
       </footer>

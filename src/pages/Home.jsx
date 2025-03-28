@@ -84,7 +84,7 @@ function Home() {
 
           <section id="reviews">
             <Apoio />
-          </section>
+          </section>l
 
           <section id="depoimentos">
             <h2>Deixe seu depoimento</h2>
