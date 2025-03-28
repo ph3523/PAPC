@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 
-function FormDepoimento() {
+function FormDepoimento({ pacienteId }) {
   const [texto, setTexto] = useState("");
-  const [pacienteId, setPacienteId] = useState(null);
+  // const [pacienteId, setPacienteId] = useState(null);
 
-  useEffect(() => {
-    const tipo = localStorage.getItem("tipo");
-    const id = localStorage.getItem("usuarioId");
+  // useEffect(() => {
+  //   const tipo = localStorage.getItem("tipo");
+  //   const id = localStorage.getItem("usuarioId");
 
-    if (tipo === "PACIENTE" && id) {
-      setPacienteId(parseInt(id));
-    }
-  }, []);
+  //   if (tipo === "PACIENTE" && id) {
+  //     setPacienteId(parseInt(id));
+  //   }
+  // }, []);
 
   const enviarDepoimento = async (e) => {
     e.preventDefault();

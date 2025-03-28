@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./styles/Home.css";
 import Apoio from "../components/Apoio";
 import ListaDepoimentos from "../components/depoimento";
+import FormDepoimento from "../components/FormDepoimento";
 import Button from "@mui/material/Button";
 import { TextField, Typography } from "@mui/material";
 import "@fontsource/roboto/300.css";
@@ -44,10 +45,9 @@ function Home() {
       <div className="home">
         <main>
           <section id="banner">
-            <h1>Bem-vindo ao PAPC</h1>
-            {nomeUsuario && (
-              <p style={{ fontSize: "1.2rem" }}>Olá, {nomeUsuario}! </p>
-            )}
+            <h1>
+            {nomeUsuario ? `Bem-vindo, ${nomeUsuario}!` : "Bem-vindo ao PAPC"}
+            </h1>
           </section>
 
           <section id="actions">

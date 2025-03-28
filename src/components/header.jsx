@@ -15,19 +15,26 @@ function Header() {
   };
 
   useEffect(() => {
-    checkLoginStatus();
 
-    const handleStorageChange = () => {
+    try {
       checkLoginStatus();
-    };
+  
+      const handleStorageChange = () => {
+        checkLoginStatus();
+      };
+  
+      window.addEventListener('storage', handleStorageChange);
+      window.addEventListener('loginStatusChanged', checkLoginStatus);
+  
+      return () => {
+        window.removeEventListener('storage', handleStorageChange);
+        window.removeEventListener('loginStatusChanged', checkLoginStatus);
+      };
+    }
+    catch (error) {
+      console.error("Erro ao Header:", error);
+    }
 
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('loginStatusChanged', checkLoginStatus);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('loginStatusChanged', checkLoginStatus);
-    };
   }, []);
 
   const handleLogout = () => {
