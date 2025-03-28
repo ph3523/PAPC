@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Cadastro.css";
-
+import { cadastrarUsuario } from "../services/usuarioService";
 function Cadastro() {
 const [showCadastro, setShowCadastro] = useState(false);
 const [showPaciente, setShowPaciente] = useState(false);
@@ -32,179 +32,169 @@ const [objetivoTerapia, setObjetivoTerapia] = useState("");
   Cadastro.handleOpenCadastro = () => setShowCadastro(true);
   const handleCloseCadastro = () => setShowCadastro(false);
 
-  const handleNextStep = () => setStep(step + 1);
-  const handlePrevStep = () => setStep(step - 1);
-
-  const handleChange = (e, setState) => {
-    setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleOpenPaciente = () => {
+    setShowPaciente(true);
+    setShowCadastro(false);
   };
+  const handleClosePaciente = () => setShowPaciente(false);
+
+  const handleOpenProfissional = () => {
+    setShowProfissional(true);
+    setShowCadastro(false);
+  };
+  const handleCloseProfissional = () => setShowProfissional(false);
+
+  if (!showCadastro && !showPaciente && !showProfissional) return null;
 
   return (
     <>
-      <button onClick={() => setShowCadastro(true)}>Cadastrar</button>
       {showCadastro && (
         <div className="modal-overlay">
           <div className="modal-content">
-            {step === 1 && (
-              <>
-                <h2>Escolha o tipo de cadastro</h2>
-                <button onClick={() => setStep(2)}>Paciente</button>
-                <button onClick={() => setStep(5)}>Profissional</button>
-              </>
-            )}
-
-            {step === 2 && (
-              <>
-                <h2>Cadastro de Paciente</h2>
-                <input
-                  type="text"
-                  name="nome"
-                  placeholder="Nome"
-                  value={paciente.nome}
-                  onChange={(e) => handleChange(e, setPaciente)}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                  value={paciente.email}
-                  onChange={(e) => handleChange(e, setPaciente)}
-                />
-                <input
-                  type="password"
-                  name="senha"
-                  placeholder="Senha"
-                  value={paciente.senha}
-                  onChange={(e) => handleChange(e, setPaciente)}
-                />
-                <button onClick={handleNextStep}>Próximo</button>
-              </>
-            )}
-
-            {step === 3 && (
-              <>
-                <h2>Mais Informações</h2>
-                <input
-                  type="date"
-                  name="dataNascimento"
-                  value={paciente.dataNascimento}
-                  onChange={(e) => handleChange(e, setPaciente)}
-                />
-                <input
-                  type="text"
-                  name="genero"
-                  placeholder="Gênero"
-                  value={paciente.genero}
-                  onChange={(e) => handleChange(e, setPaciente)}
-                />
-                <button onClick={handlePrevStep}>Voltar</button>
-                <button onClick={handleNextStep}>Próximo</button>
-              </>
-            )}
-
-            {step === 4 && (
-              <>
-                <h2>Contato</h2>
-                <input
-                  type="text"
-                  name="endereco"
-                  placeholder="Endereço"
-                  value={paciente.endereco}
-                  onChange={(e) => handleChange(e, setPaciente)}
-                />
-                <input
-                  type="text"
-                  name="telefone"
-                  placeholder="Telefone"
-                  value={paciente.telefone}
-                  onChange={(e) => handleChange(e, setPaciente)}
-                />
-                <button onClick={handlePrevStep}>Voltar</button>
-                <button onClick={() => alert("Cadastro realizado!")}>
-                  Cadastrar
-                </button>
-              </>
-            )}
-
-            {step === 5 && (
-              <>
-                <h2>Cadastro de Profissional</h2>
-                <input
-                  type="text"
-                  name="nome"
-                  placeholder="Nome"
-                  value={profissional.nome}
-                  onChange={(e) => handleChange(e, setProfissional)}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                  value={profissional.email}
-                  onChange={(e) => handleChange(e, setProfissional)}
-                />
-                <input
-                  type="password"
-                  name="senha"
-                  placeholder="Senha"
-                  value={profissional.senha}
-                  onChange={(e) => handleChange(e, setProfissional)}
-                />
-                <button onClick={handleNextStep}>Próximo</button>
-              </>
-            )}
-
-            {step === 6 && (
-              <>
-                <h2>Informações Profissionais</h2>
-                <input
-                  type="text"
-                  name="crm"
-                  placeholder="CRM"
-                  value={profissional.crm}
-                  onChange={(e) => handleChange(e, setProfissional)}
-                />
-                <input
-                  type="text"
-                  name="especialidade"
-                  placeholder="Especialidade"
-                  value={profissional.especialidade}
-                  onChange={(e) => handleChange(e, setProfissional)}
-                />
-                <button onClick={handlePrevStep}>Voltar</button>
-                <button onClick={handleNextStep}>Próximo</button>
-              </>
-            )}
-
-            {step === 7 && (
-              <>
-                <h2>Localização</h2>
-                <input
-                  type="text"
-                  name="localizacao"
-                  placeholder="Localização"
-                  value={profissional.localizacao}
-                  onChange={(e) => handleChange(e, setProfissional)}
-                />
-                <button onClick={handlePrevStep}>Voltar</button>
-                <button onClick={() => alert("Cadastro realizado!")}>
-                  Cadastrar
-                </button>
-              </>
-            )}
-
-            <button
-              className="close-button"
-              onClick={() => setShowCadastro(false)}
-            >
-              Fechar
-            </button>
+            <header>
+              <h2>Escolha o tipo de cadastro</h2>
+            </header>
+            <section className="modal-buttons">
+              <button onClick={handleOpenPaciente}>Paciente</button>
+              <button onClick={handleOpenProfissional}>Profissional</button>
+            </section>
+            <footer>
+              <button className="close-button" onClick={handleCloseCadastro}>
+                Fechar
+              </button>
+            </footer>
           </div>
         </div>
       )}
+
+{showPaciente && (
+  <div className="modal-overlay">
+    <section className="modal-content">
+      <header>
+        <h2>Cadastro de Paciente</h2>
+      </header>
+      <form onSubmit={async (e) => {
+        e.preventDefault();
+
+        const { ok, data } = await cadastrarUsuario({
+          nome_usuario: pacienteNome,
+          email: pacienteEmail,
+          senha: pacienteSenha,
+          tipo: "PACIENTE",
+          paciente: {
+          nome_paciente: pacienteNome,
+          data_nascimento: dataNascimento,
+          genero,
+          endereco,
+          telefone,
+          queixas,
+          historico_familiar: historicoFamiliar,
+          uso_medicamentos: usoMedicamentos,
+          objetivo_terapia: objetivoTerapia
+          }
+        });
+
+        if (ok) {
+          alert("Paciente cadastrado com sucesso!");
+          setShowPaciente(false);
+        } else {
+          alert(`Erro ao cadastrar: ${data.error || "Erro desconhecido"}`);
+        }
+      }}>
+        <input type="text" placeholder="Nome" value={pacienteNome} onChange={(e) => setPacienteNome(e.target.value)} />
+        <input type="email" placeholder="E-mail" value={pacienteEmail} onChange={(e) => setPacienteEmail(e.target.value)} />
+        <input type="password" placeholder="Senha" value={pacienteSenha} onChange={(e) => setPacienteSenha(e.target.value)} />
+        <input type="date" placeholder="Data de nascimento" value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} />
+        <input type="text" placeholder="Gênero" value={genero} onChange={(e) => setGenero(e.target.value)} />
+        <input type="text" placeholder="Endereço" value={endereco} onChange={(e) => setEndereco(e.target.value)} />
+        <input type="text" placeholder="Telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
+        <input type="text" placeholder="Queixas" value={queixas} onChange={(e) => setQueixas(e.target.value)} />
+        <input type="text" placeholder="Histórico Familiar" value={historicoFamiliar} onChange={(e) => setHistoricoFamiliar(e.target.value)} />
+        <input type="text" placeholder="Uso de Medicamentos" value={usoMedicamentos} onChange={(e) => setUsoMedicamentos(e.target.value)} />
+        <input type="text" placeholder="Objetivo da Terapia" value={objetivoTerapia} onChange={(e) => setObjetivoTerapia(e.target.value)} />
+        <button type="submit">Cadastrar</button>
+      </form>
+      <footer>
+        <button className="close-button" onClick={handleClosePaciente}>Fechar</button>
+      </footer>
+    </section>
+  </div>
+)}
+
+{showProfissional && (
+  <div className="modal-overlay">
+    <section className="modal-content">
+      <header>
+        <h2>Cadastro de Profissional</h2>
+      </header>
+
+      <form onSubmit={async (e) => {
+        e.preventDefault();
+        const { ok, data } = await cadastrarUsuario({
+          nome_usuario: profNome,
+          email: profEmail,
+          senha: profSenha,
+          tipo: "PROFISSIONAL",
+          profissional: {
+            nome_profissional: profNome,
+            crm,
+            especialidade,
+            localizacao,
+            faixa_etaria: faixaEtaria,
+            atendimentos_gratuitos: gratuito,
+            foto_perfil: fotoPerfil || "sem-foto.jpg"
+          }
+        });
+
+        if (ok) {
+          alert("Profissional cadastrado com sucesso!");
+          setShowProfissional(false);
+        } else {
+          alert(`Erro ao cadastrar: ${data.error || "Erro desconhecido"}`);
+        }
+      }}>
+        {etapaProf === 1 && (
+          <>
+            <input type="text" placeholder="Nome" value={profNome} onChange={(e) => setProfNome(e.target.value)} />
+            <input type="email" placeholder="E-mail" value={profEmail} onChange={(e) => setProfEmail(e.target.value)} />
+            <input type="password" placeholder="Senha" value={profSenha} onChange={(e) => setProfSenha(e.target.value)} />
+            <button type="button" onClick={() => setEtapaProf(2)}>Próximo</button>
+          </>
+        )}
+
+        {etapaProf === 2 && (
+          <>
+            <input type="text" placeholder="CRM" value={crm} onChange={(e) => setCrm(e.target.value)} />
+            <input type="text" placeholder="Especialidade" value={especialidade} onChange={(e) => setEspecialidade(e.target.value)} />
+            <input type="text" placeholder="Localização" value={localizacao} onChange={(e) => setLocalizacao(e.target.value)} />
+            <button type="button" onClick={() => setEtapaProf(1)}>Voltar</button>
+            <button type="button" onClick={() => setEtapaProf(3)}>Próximo</button>
+          </>
+        )}
+
+        {etapaProf === 3 && (
+          <>
+            <input type="text" placeholder="Faixa Etária de Atendimento" value={faixaEtaria} onChange={(e) => setFaixaEtaria(e.target.value)} />
+            <label>
+              Atendimento Gratuito:
+              <input type="checkbox" checked={gratuito} onChange={(e) => setGratuito(e.target.checked)} />
+            </label>
+            <input type="text" placeholder="Link da Foto de Perfil" value={fotoPerfil} onChange={(e) => setFotoPerfil(e.target.value)} />
+            <button type="button" onClick={() => setEtapaProf(2)}>Voltar</button>
+            <button type="submit">Cadastrar</button>
+          </>
+        )}
+      </form>
+
+      <footer>
+        <button className="close-button" onClick={handleCloseProfissional}>Fechar</button>
+      </footer>
+    </section>
+  </div>
+)}
     </>
   );
-}
+};
 
 export default Cadastro;
 export const handleOpenCadastro = () => Cadastro.handleOpenCadastro();
