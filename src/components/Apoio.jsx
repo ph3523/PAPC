@@ -2,16 +2,21 @@ import React,{ useState, useEffect} from "react";
 import './Apoio.css';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
 import { listarGruposApoio } from "../services/grupoApoioService"; 
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import { Typography } from "@mui/material";
 
-const SIZE ={
+const SIZE = {
   mobile: 768,
-  medium: 940
-}
+  medium: 940,
+};
 
 function Apoio() {
   const [screenSize, setScreenSize] = useState({
     isMobile: window.innerWidth < SIZE.mobile,
-    isMedium: window.innerWidth < SIZE.medium
+    isMedium: window.innerWidth < SIZE.medium,
   });
   const [gruposApoio, setGruposApoio] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -60,24 +65,24 @@ function Apoio() {
     const handleResize = () => {
       setScreenSize({
         isMobile: window.innerWidth < SIZE.mobile,
-        isMedium: window.innerWidth < SIZE.medium
+        isMedium: window.innerWidth < SIZE.medium,
       });
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  },[]);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const getColumns = () => {
     const { isMobile, isMedium } = screenSize;
-    if(isMobile) return 1;
-    if(isMedium) return 2;
+    if (isMobile) return 1;
+    if (isMedium) return 2;
     return 3;
   };
 
   const groupedCards = gruposApoio.reduce((acc, curr, i) => {
     const columns = getColumns();
-    if(i % columns === 0) acc.push([]);
+    if (i % columns === 0) acc.push([]);
     acc[acc.length - 1].push(curr);
     return acc;
   },[]);
@@ -86,8 +91,10 @@ function Apoio() {
 
   return (
     <div>
-      <h1 className="text-white text-center mb-4">Grupos de Apoio</h1>
-      <Carousel data-bs-theme="dark">
+      <Typography className="text-white text-center mb-4" variant="h2">
+        Grupos de Apoio
+      </Typography>
+      <Carousel className="carousel" data-bs-theme="dark">
         {groupedCards.map((group, idx) => (
           <Carousel.Item key={idx}>
             <Row>
