@@ -2,25 +2,35 @@ import React, { useState } from "react";
 import "./Cadastro.css";
 
 function Cadastro() {
-  const [showCadastro, setShowCadastro] = useState(false);
-  const [step, setStep] = useState(1);
-  const [paciente, setPaciente] = useState({
-    nome: "",
-    email: "",
-    senha: "",
-    dataNascimento: "",
-    genero: "",
-    endereco: "",
-    telefone: "",
-  });
-  const [profissional, setProfissional] = useState({
-    nome: "",
-    email: "",
-    senha: "",
-    crm: "",
-    especialidade: "",
-    localizacao: "",
-  });
+const [showCadastro, setShowCadastro] = useState(false);
+const [showPaciente, setShowPaciente] = useState(false);
+const [showProfissional, setShowProfissional] = useState(false);
+const [pacienteNome, setPacienteNome] = useState("");
+const [pacienteEmail, setPacienteEmail] = useState("");
+const [pacienteSenha, setPacienteSenha] = useState("");
+const [dataNascimento, setDataNascimento] = useState("");
+const [genero, setGenero] = useState("");
+const [endereco, setEndereco] = useState("");
+const [telefone, setTelefone] = useState("");
+const [queixas, setQueixas] = useState("");
+const [historicoFamiliar, setHistoricoFamiliar] = useState("");
+const [usoMedicamentos, setUsoMedicamentos] = useState("");
+const [objetivoTerapia, setObjetivoTerapia] = useState("");
+
+//O cara é profissional
+  const [profNome, setProfNome] = useState("");
+  const [profEmail, setProfEmail] = useState("");
+  const [profSenha, setProfSenha] = useState("");
+  const [crm, setCrm] = useState("");
+  const [especialidade, setEspecialidade] = useState("");
+  const [localizacao, setLocalizacao] = useState("");
+  const [faixaEtaria, setFaixaEtaria] = useState("");
+  const [gratuito, setGratuito] = useState(false);
+  const [fotoPerfil, setFotoPerfil] = useState("");
+  const [etapaProf, setEtapaProf] = useState(1);
+
+  Cadastro.handleOpenCadastro = () => setShowCadastro(true);
+  const handleCloseCadastro = () => setShowCadastro(false);
 
   const handleNextStep = () => setStep(step + 1);
   const handlePrevStep = () => setStep(step - 1);
