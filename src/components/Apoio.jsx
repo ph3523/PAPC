@@ -19,24 +19,24 @@ function Apoio() {
 
 
   useEffect(() => {
-    async function FetchGruposApoio() {
+    async function fetchGruposApoio() {
       setLoading(true);
 
       try {
         const { ok, data } = await listarGruposApoio();
-        if (!ok) {
+        if (ok) {
           const gruposMapeados = data.map(grupo => ({
             id: grupo.id,
             nome: grupo.nome,
             descricao: grupo.descricao,
-            endereco: grupo.local,
-            horarios: grupo.horario,
-            tipoAtendimento: grupo.tipo_atendimento,
+            local: grupo.local,
+            horario: grupo.horario,
+            tipo_atendimento: grupo.tipo_atendimento,
             gratuito: grupo.gratuito,
-            valorMensal: !grupo.gratuito ? grupo.valor : null,
-            publicoAlvo: grupo.publico_alvo,
+            valor: !grupo.gratuito ? grupo.valor : null,
+            publico_alvo: grupo.publico_alvo,
             // Use uma imagem padrão para todos os grupos ou crie uma lógica para relacionar imagens
-            imagem: `../assets/img_gp${Math.floor(Math.random() * 6) + 1}.jpg`
+            image: grupo.image
           }));
 
           setGruposApoio(gruposMapeados);
@@ -75,7 +75,7 @@ function Apoio() {
     return 3;
   };
 
-  const groupedCards = indicationData.reduce((acc, curr, i) => {
+  const groupedCards = gruposApoio.reduce((acc, curr, i) => {
     const columns = getColumns();
     if(i % columns === 0) acc.push([]);
     acc[acc.length - 1].push(curr);
@@ -96,7 +96,7 @@ function Apoio() {
                   <Card className="mx-4">
                     <Card.Img 
                       variant="top" 
-                      src={grupo.imagem} 
+                      src={grupo.image} 
                       alt={grupo.nome}
                     />
                     <Card.Body>
@@ -104,14 +104,14 @@ function Apoio() {
                       <Card.Text>
                         {grupo.descricao}
                         <br />
-                        <strong>Local:</strong> {grupo.endereco}
+                        <strong>Local:</strong> {grupo.local}
                         <br />
-                        <strong>Horários:</strong> {grupo.horarios}
+                        <strong>Horários:</strong> {grupo.horario}
                       </Card.Text>
                     </Card.Body>
                     <Card.Footer>
                       <small className="text-muted">
-                        {grupo.tipoAtendimento} | {grupo.gratuito ? 'Gratuito' : `Valor: ${grupo.valorMensal}`}
+                        {grupo.tipo_atendimento} | {grupo.gratuito ? 'Gratuito' : `Valor: ${grupo.valor}`}
                       </small>
                     </Card.Footer>
                   </Card>

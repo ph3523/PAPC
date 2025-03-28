@@ -1,16 +1,8 @@
-import axios from 'axios';
+import api from './api';
 
-// Configuração base do Axios
-const api = axios.create({
-  baseURL: 'http://localhost:3001',
-  headers: {
-    'Content-Type': 'application/json',
-  }
-});
 
-/**
- * Busca todos os grupos de apoio
- */
+// Busca todos os grupos de apoio
+
 export async function listarGruposApoio() {
   try {
     const response = await api.get('/grupos-apoio');
@@ -22,9 +14,9 @@ export async function listarGruposApoio() {
   }
 }
 
-/**
- * Busca um grupo de apoio pelo ID
- */
+
+// Busca um grupo de apoio pelo ID
+
 export async function buscarGrupoApoioPorId(id) {
   try {
     const response = await api.get(`/grupos-apoio/${id}`);
@@ -36,9 +28,9 @@ export async function buscarGrupoApoioPorId(id) {
   }
 }
 
-/**
- * Cria um novo grupo de apoio
- */
+
+// Cria um novo grupo de apoio
+
 export async function criarGrupoApoio(grupoApoio) {
   try {
     const response = await api.post('/grupos-apoio', grupoApoio);
@@ -50,9 +42,9 @@ export async function criarGrupoApoio(grupoApoio) {
   }
 }
 
-/**
- * Atualiza um grupo de apoio existente
- */
+
+// Atualiza um grupo de apoio existente
+
 export async function atualizarGrupoApoio(id, grupoApoio) {
   try {
     const response = await api.put(`/grupos-apoio/${id}`, grupoApoio);
@@ -64,9 +56,9 @@ export async function atualizarGrupoApoio(id, grupoApoio) {
   }
 }
 
-/**
- * Exclui um grupo de apoio
- */
+
+//Exclui um grupo de apoio
+
 export async function excluirGrupoApoio(id) {
   try {
     const response = await api.delete(`/grupos-apoio/${id}`);

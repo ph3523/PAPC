@@ -1,12 +1,4 @@
-import axios from 'axios';
-
-// Configuração base do Axios
-const api = axios.create({
-  baseURL: 'http://localhost:3001',
-  headers: {
-    'Content-Type': 'application/json',
-  }
-});
+import api from './api';
 
 export async function cadastrarUsuario(usuario) {
   try {

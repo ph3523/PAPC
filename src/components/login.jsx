@@ -36,6 +36,7 @@ function Login() {
   
         navigate('/');
       } else {
+        console.error("Erro ao logar:", error);
         setError(data.error || "Credenciais inválidas");
       }
     }
